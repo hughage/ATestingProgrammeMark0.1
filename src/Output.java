@@ -9,6 +9,8 @@ public class Output {
 		    writer.println(user.name);
 		    writer.println(user.age);
 		    writer.println(user.sex);
+		    writer.println(user.sex);
+		    writer.println(user.sex);
 		    writer.close();
 		} catch (Exception e) {
 		   // do something
