@@ -7,12 +7,12 @@ public class Cursors {
 	PApplet p;
 	Vector position;
 	
+	boolean distanceLine = false;
+	
 	int xSize = 10; //size of cursor
 	int ySize = 10;
 	int r,g,b;		//color of cursor
 	int xPos, yPos; //position of cursor
-	
-	
 	
 	
 	int a = 20; //missing cursor arrow size
@@ -103,6 +103,18 @@ public class Cursors {
 			p.popMatrix();
 			p.noFill();
 		}
+		
+		
+	}
+	
+	
+	public void drawDistanceLine(Vector t, float mag3D){
+			p.strokeWeight(1);
+			p.stroke(100);
+			p.line(xPos, yPos, t.getX(), t.getY());
+			p.text(mag3D, (Math.abs(xPos+t.getX()))/2, (Math.abs(yPos+t.getY()))/2);
+			p.noStroke();
+			
 	}
 	
 	

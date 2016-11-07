@@ -40,12 +40,9 @@ public class Leap {
 		zm = ((float)d)/z; 
 		
 		xp = (x/2);
-		yp = -(y/2);
-		zp = -(z/2);
-		
-		System.out.println(xp);
-		System.out.println(yp);
-		System.out.println(zp);
+		yp = (y/2);
+		zp = (z/2);
+
 	}
 	
 	
@@ -67,12 +64,33 @@ public class Leap {
 	
 	private void screenCorrected(){
 		indexCorrected.setX(xm*(index.getX()+xp));
-		indexCorrected.setY(height-(ym*(index.getY()+yp)));
+		indexCorrected.setY(height-(ym*((index.getY()-200)+yp)));
 		indexCorrected.setZ(zp+(zm*index.getZ()));		
 		thumbCorrected.setX(xm*(thumb.getX()+xp));
-		thumbCorrected.setY(height-(ym*(thumb.getY()+yp)));
+		thumbCorrected.setY(height-(ym*((thumb.getY()-200)+yp)));
 		thumbCorrected.setZ(zp+(zm*thumb.getZ()));
 	}
+	
+	public boolean inIdealVolume(){
+		boolean inIdeal = false;
+		if (inVol(thumb) && inVol(index)){
+			inIdeal = true;
+		}
+		return inIdeal;
+	}
+	
+	private boolean inVol(Vector t){
+		boolean inIdeal = false;
+		if(t.getX()<xp && t.getX()>-xp &&
+		   t.getY()< 200+yp && t.getY()>200-yp && //200 is idea y height cog
+		   t.getZ()<zp && t.getZ()>-zp){
+			inIdeal = true; 
+		}
+		return inIdeal;
+	}
+	
+
+	
 	
 	
 }
