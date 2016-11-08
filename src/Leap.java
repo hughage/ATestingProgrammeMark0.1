@@ -6,6 +6,7 @@ public class Leap {
 	Vector index, thumb; //actuall millimeter values
 	Vector indexCorrected, thumbCorrected; //to scale to screen values xp+(xm*index.x)
 	
+	
 	int width, height, depth;
 	
 	//ideal operating volume for leap 

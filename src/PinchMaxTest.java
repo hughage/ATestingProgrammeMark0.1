@@ -9,6 +9,8 @@ public class PinchMaxTest extends PApplet {
 	Vector index, thumb;
 	Cursors iCursor, tCursor;	
 	TouchObject left, right; 
+	TouchObject[] objects;
+	Haptic scene; 
 	
 	
 	PinchMaxTest (){
@@ -34,9 +36,11 @@ public class PinchMaxTest extends PApplet {
 		  tCursor = new  Cursors (123,123,234,this);
 		  left = new TouchObject(width/4,height/2, 119, 190, 119, this);
 		  right = new TouchObject(3*(width/4),height/2, 119, 190, 119, this);
-		  //TouchObject(int x, int y, int r, int g, int b, PApplet parent){
+		  objects = new TouchObject[2];
+		  objects[0] = left;
+		  objects[1] = right;
 		  
-		  
+		  scene = new Haptic(objects, arduino);
 		  
 	  }
 
@@ -54,14 +58,12 @@ public class PinchMaxTest extends PApplet {
 		  } else {
 			 background(150); 
 		  }
-		  
-		  float[] toRender = {0,0};
-		  toRender = left.isTouched(index, thumb);
-		  toRender = right.isTouched(index, thumb);
-		  
+		    
 		  left.update();
 		  right.update();
 		  
+		  Vector[] temp = {index,thumb};
+		  scene.collsion(temp);		
 		  
 		  iCursor.update(index);	  
 		  tCursor.update(thumb);
