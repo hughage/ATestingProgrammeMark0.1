@@ -3,7 +3,7 @@ import processing.core.PApplet;
 
 public class PinchMaxTest extends PApplet { 
 	
-	String cock = "fbdkfvbdfvbkdfz";
+
 	Leap myLeap;
 	Arduino arduino;
 	Vector index, thumb;
@@ -21,7 +21,8 @@ public class PinchMaxTest extends PApplet {
 	
 	  public void settings() {
 			smooth(8);
-			fullScreen(P3D);
+			//size(500,500);
+			fullScreen(P3D,1);
 		  }
 	  
 	  
@@ -69,15 +70,14 @@ public class PinchMaxTest extends PApplet {
 		  tCursor.update(thumb);
 		  iCursor.drawDistanceLine(thumb, myLeap.index.distanceTo(myLeap.thumb));
 		  
-		  
+		  //arduino.displayPrint();
 
-		    textAlign(CENTER,CENTER);
-		    text(cock,width/2,height/2);
+		   
 		  }
 	  
 	  public void setText (String t){
 		  
-		  this.cock = t; 
+		//  this.cock = t; 
 		  
 	  }
 	  

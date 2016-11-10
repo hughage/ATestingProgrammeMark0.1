@@ -6,8 +6,10 @@ public class Arduino {
 	Serial stream;
 	PApplet p;	
 	int baudRate = 115200;
-	String ard = "/dev/tty.usbmodemFA131";
+	String ard = "/dev/tty.usbmodemFA141";
 	
+	String[] cock = {"blah","blah","blah","blah","blah","blah","blah","blah","blah"};
+	int stringCount =0;
 	
 	int maxArduinoValue = 255, minArduinoValue = 0;
 	float multiplyValue;
@@ -73,21 +75,42 @@ public class Arduino {
 		}	
 	}	
 	
-	public void setAB(float c[]){		
+	public void setAB(float c[]){	
+		
 		float a = c[0];
 		float b = c[1];
+		
 		float tempF = (float)a*multiplyValue;
 		int tempI = (int) tempF;
+		
 		float tempF2 = (float)b*multiplyValue;
 		int tempI2 = (int) tempF2;
+		
 		if (previousA != tempI || previousB != tempI2 ){
 			String send = "a"+tempI+"b"+tempI2+"=";
 			System.out.println("a"+tempI+"b"+tempI2+"= ");
 			stream.write(send);
+			printToScreen(send);
 			previousA = tempI;
 			previousB = tempI2;
 		}	
 	}	
+	
+	public void printToScreen(String t){
+		if(stringCount< cock.length-1){
+			stringCount++;
+		} else {
+			stringCount = 0;
+		}
+		cock[stringCount] = t;
+	}
+	
+
+	public void displayPrint(){
+		for(int i =0; i<cock.length; i++){
+			    p.text(cock[i],p.width/2,(p.height/2)+(i*20));
+		}
+	}
 		
 
 }

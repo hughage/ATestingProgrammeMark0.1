@@ -22,7 +22,7 @@ public class Haptic {
 			Vector temp = v[i];
 			for (int j =0; j< objects.length; j++){
 				if(getDistance(temp,objects[j])< (objects[j].size)/2){
-					forces[i] = 0.2f;
+					forces[i] = 1.0f;
 					objects[j].contact = true;
 					}
 				}

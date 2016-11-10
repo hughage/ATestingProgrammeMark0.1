@@ -2,11 +2,12 @@
 
 public class MyWindow {
 	
-	static PinchMaxTest pinchMaxTest;
-	
+	//static PinchMaxTest pinchMaxTest;
+	ControlWindow con;
 	MyWindow(){
 	
-	pinchMaxTest = new PinchMaxTest();
+		con = new ControlWindow();
+	///pinchMaxTest = new PinchMaxTest();
 
 	}
 	
