@@ -66,9 +66,9 @@ public class Button {
 	public void click(){
 		if(p.mouseX>x && p.mouseX<x+xsize
 				&& p.mouseY>y && p.mouseY<y+ysize){
-			isSelected = true;
+			isSelected = !isSelected;
 		} else {
-			isSelected = false;
+			//isSelected = false;
 		}
 	}
 	

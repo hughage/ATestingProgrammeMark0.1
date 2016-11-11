@@ -13,6 +13,8 @@ public class GraspTestController extends PApplet {
 	float average = 0.0f;
 	float variance = 0.0f;
 	
+	boolean delay = true;
+	
 	GraspTestController (){
 		String[] a = {""};
 		PApplet.runSketch(a, this);
@@ -28,7 +30,6 @@ public class GraspTestController extends PApplet {
 	  
 	  
 	  public void setup(){
-		  println("bang");
 		    results = new float[5];
 		    spaceing = height/(results.length+6);
 		    finish = new Button(this,1,8,"Finshed",(int)(((float)results.length+4.5f)*(float)spaceing));
@@ -42,15 +43,21 @@ public class GraspTestController extends PApplet {
 		  textSize(20);
 		  textAlign(CENTER, CENTER);
 		  
-			  
-		  text(graspSizeTest.displayHeight, width/2, spaceing);
+		  if(delay){
+			  delay(3000);
+			  delay = false;	  
+		  } 
+		  
+		  currentGraspDistance = graspSizeTest.getCurrentGraspDistance();
+		  text(currentGraspDistance, width/2, spaceing);
+		  
 		  
 		  text("Test Number", width/3, 2*spaceing);
 		  text("Results", 2*(width/3), 2*spaceing);
 		  
 		  for (int i=0; i<results.length; i++){
 			  text(i+1, width/3, (i+3)*spaceing);
-			  text(results[i], 2*(width/3), (i+3)*spaceing);
+			  text(results[i], 2*(width/3), (i+3)*spaceing); 
 		  }
 		  
 		  text("Average:", width/3, (results.length+3)*spaceing);
@@ -62,10 +69,7 @@ public class GraspTestController extends PApplet {
 		  finish.drawButton();
 		  
 	  }
-	  
-//	  public void setCurrentGraspDistance (float d){
-//		  this.currentGraspDistance=d;
-//	  }
+
 	  
 	  public void keyReleased(){
 		  if (key == '1') {
@@ -111,19 +115,31 @@ public class GraspTestController extends PApplet {
 			  meanDifSquared[i]= (float) Math.pow((average-results[i]), 2);
 			  meanDifSquaredSum = meanDifSquaredSum + meanDifSquared[i];
 		  }
-		  variance = (float)Math.pow(meanDifSquaredSum, 0.5);
+		  variance = meanDifSquaredSum/(results.length-1);
 		  return variance;
 	  }
 	  
 	  public void mouseReleased(){
-		  finish.click();
-		  if (finish.isSelected){
-			  graspSizeTest.close();
-			  
-			  //this.frame.setVisible(false);
-			 // super.surface.setVisible(false);
-			  //surface.setVisible(false);
-			  
+		  
+		  finish.click();	  
+		  if (finish.isSelected){		  
+			  this.running(false);
+			  finish.isSelected = false;
+		  } else {
+			  this.running(true);
+			  finish.isSelected = true;
+		  }
+	  }
+	  
+	  public void running(boolean g){
+		  if(!g){
+		  this.noLoop();
+		  surface.setVisible(false);
+		  graspSizeTest.running(false);
+		  } else {
+			  this.loop();
+			  surface.setVisible(true);
+			  graspSizeTest.running(true);
 		  }
 	  }
 	  

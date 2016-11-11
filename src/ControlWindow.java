@@ -3,8 +3,10 @@ import processing.core.PApplet;
 public class ControlWindow extends PApplet {
 	
 	String[] windows = {"Grasp Size Test", "JND", "JNDTester", "Pinch Tests", "Pinch Test Tester", "Print Results", "Quit"};
+	boolean initiated[];
 	GraspTestController graspTestController;
 	PinchMaxTest pinchMaxTest;
+	JNDController jndController;
 	
 	
 	int butWidth;
@@ -25,6 +27,11 @@ public class ControlWindow extends PApplet {
 	  
 	  public void setup(){
 		  
+		  initiated = new boolean[windows.length-1];
+		  for (int i =0; i<initiated.length; i++){
+			  initiated[i]=false;
+		  }
+		  
 		  buttons = new Button[windows.length];
 		  for (int i =0; i<windows.length; i++){
 			  buttons[i] = new Button (this,i,windows.length,windows[i]);
@@ -42,19 +49,44 @@ public class ControlWindow extends PApplet {
 	  }
 	  
 	  public void mouseReleased(){
-		  int selector =0;;
+		  
+		  int selector =7;
 		  for (int i =0; i<buttons.length; i++){
 			  buttons[i].click();
 			  if(buttons[i].isSelected)	{
-				  selector =i;
-			  }
+				  selector =i +1;
+			  } 
+			  buttons[i].click();
 		  }
 		  
 		 switch (selector){
-		 case 0: graspTestController = new GraspTestController();
+		 
+		 case 0:
+			 break;
+		 
+		 case 1: 
+			 println ("Bang");
+			 if (!initiated[selector]){
+				 graspTestController = new GraspTestController();
+				 initiated[selector] = true;
+			 } if(initiated[selector]){
+				 graspTestController.running(true);
+			 }
 		 break;
-		 case 6: exit();
+		 
+		 case 2: 
+			 if (!initiated[selector]){
+				 jndController = new  JNDController();
+				 initiated[selector] = true;
+			 } if(initiated[selector]) {
+				 jndController.running(true);
+			 }
 		 break;
+		 
+		
+		 case 7: exit();
+		 break;
+
 		 
 		 }
 		  
