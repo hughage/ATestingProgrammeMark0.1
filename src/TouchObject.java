@@ -7,6 +7,7 @@ public class TouchObject {
 	PApplet p;
 	int posX, posY, size, r, g, b;
 	boolean contact = false;
+	int hapticResponce = 0;
 	
 	
 	TouchObject(int x, int y, int r, int g, int b, PApplet parent){
@@ -60,6 +61,14 @@ public class TouchObject {
 		b = b*b;
 		float c = p.sqrt(a+b);
 		return c;
+	}
+	
+	public void setHapticResponce(int p){
+		this.hapticResponce = p;
+	}
+	
+	public int getHapticResponce(){
+		return hapticResponce;
 	}
 
 }

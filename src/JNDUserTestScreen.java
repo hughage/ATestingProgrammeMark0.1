@@ -80,6 +80,11 @@ public class JNDUserTestScreen extends PApplet {
 		  
 	  }
 	  
+	  public void setHapticResponce(int l, int r){
+		  left.setHapticResponce(l);
+		  right.setHapticResponce(r);
+	  }
+	  
 	  public void running(boolean g){
 		  if(!g){
 		  this.noLoop();

@@ -46,6 +46,10 @@ public class JNDController extends PApplet {
 				 changeValues[i][j]=refferenceValues[i];
 			 }
 		 }
+		 
+		 delay(3000);
+		 setHapticResponce();
+		 
 	  }
 
 	  
@@ -122,6 +126,7 @@ public class JNDController extends PApplet {
 			    }	   	    
 		  }
 		  recalculate();
+		  setHapticResponce();
 	  }
 	  
 	  public void keyPressed(){
@@ -129,7 +134,8 @@ public class JNDController extends PApplet {
 		    if (keyCode == RIGHT) {
 		    	int v = changeValues[currentTest][currentSubTest];
 		    	if(v<pwmMaxValue){
-		    		changeValues[currentTest][currentSubTest] = v +1 ;
+		    		changeValues[currentTest][currentSubTest] = v +1;
+		    		setHapticResponce();
 		    	}
 		    	recalculate();
 		    }
@@ -137,6 +143,7 @@ public class JNDController extends PApplet {
 		     	int v = changeValues[currentTest][currentSubTest];
 		    	if(v> (refferenceValues[currentTest])){
 			    	changeValues[currentTest][currentSubTest] = v -1;
+			    	setHapticResponce();
 		    	}
 		    	recalculate();
 		    }
@@ -145,6 +152,9 @@ public class JNDController extends PApplet {
 		  
 	  
 	  
+	  private void setHapticResponce(){
+		  userTestScreen.setHapticResponce(changeValues[currentTest][currentSubTest],refferenceValues[currentTest]);
+	  }
 	  
 	  private void recalculate(){
 		  getAverage();
