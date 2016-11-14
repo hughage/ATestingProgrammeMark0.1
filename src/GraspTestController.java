@@ -127,7 +127,7 @@ public class GraspTestController extends PApplet {
 			  finish.isSelected = false;
 		  } else {
 			  this.running(true);
-			  finish.isSelected = true;
+			 // finish.isSelected = true;
 		  }
 	  }
 	  

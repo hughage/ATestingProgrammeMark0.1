@@ -33,7 +33,6 @@ public class JNDController extends PApplet {
 	  public void settings() {
 			smooth(8);
 			size(500,500);
-			
 		  }
 	  
 	  
@@ -41,6 +40,12 @@ public class JNDController extends PApplet {
 		  changeValues = new int[jndTests][jndSubTests];
 		  spaceing = height/(changeValues.length+spaces);
 		  quit = new Button(this,1,8,"Quit",height-(int)((float)spaceing*2));
+		  
+		 for (int i=0; i< changeValues.length; i++){
+			 for (int j = 0; j<changeValues[i].length; j++){
+				 changeValues[i][j]=refferenceValues[i];
+			 }
+		 }
 	  }
 
 	  
@@ -124,13 +129,13 @@ public class JNDController extends PApplet {
 		    if (keyCode == RIGHT) {
 		    	int v = changeValues[currentTest][currentSubTest];
 		    	if(v<pwmMaxValue){
-		    		changeValues[currentTest][currentSubTest] = v +1;
+		    		changeValues[currentTest][currentSubTest] = v +1 ;
 		    	}
 		    	recalculate();
 		    }
 		    if (keyCode == LEFT) {
 		     	int v = changeValues[currentTest][currentSubTest];
-		    	if(v>1){
+		    	if(v> (refferenceValues[currentTest])){
 			    	changeValues[currentTest][currentSubTest] = v -1;
 		    	}
 		    	recalculate();
