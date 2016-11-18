@@ -2,12 +2,14 @@ import processing.core.PApplet;
 
 public class ControlWindow extends PApplet {
 	
+	Arduino arduino;
+	
 	String[] windows = {"Grasp Size Test", "JND", "JNDTester", "Pinch Tests", "Pinch Test Tester", "Print Results", "Quit"};
 	boolean initiated[];
 	GraspTestController graspTestController;
 	PinchMaxTest pinchMaxTest;
 	JNDController jndController;
-	
+	JNDTestController jndTestController;
 	
 	int butWidth;
 	int butHeight;
@@ -26,6 +28,8 @@ public class ControlWindow extends PApplet {
 		  }
 	  
 	  public void setup(){
+		  
+		  arduino = new Arduino(this);
 		  
 		  initiated = new boolean[windows.length-1];
 		  for (int i =0; i<initiated.length; i++){
@@ -76,10 +80,19 @@ public class ControlWindow extends PApplet {
 		 
 		 case 2: 
 			 if (!initiated[selector]){
-				 jndController = new  JNDController();
+				 jndController = new  JNDController(arduino);
 				 initiated[selector] = true;
 			 } if(initiated[selector]) {
 				 jndController.running(true);
+			 }
+		 break;
+		 
+		 case 3: 
+			 if (!initiated[selector] && initiated[selector-1]){		 
+				 jndTestController = new JNDTestController(jndController.getAveragesForJNDTest(), arduino);
+				 initiated[selector] = true;
+			 } if(initiated[selector]) {
+				 jndTestController.running(true);
 			 }
 		 break;
 		 

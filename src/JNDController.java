@@ -20,13 +20,14 @@ public class JNDController extends PApplet {
 	float currentGraspDistance = 0.0f;
 	float average[] = new float[5];
 	float variance[] = new float[5];
+	int[][] averagesForJNDTest = new int[5][2];
 	
 	boolean delay = true;
 	
-	JNDController (){
+	JNDController (Arduino ard){
 		String[] a = {""};
 		PApplet.runSketch(a, this);
-		userTestScreen = new JNDUserTestScreen();
+		userTestScreen = new JNDUserTestScreen(ard);
 	}
 	
 	
@@ -48,8 +49,8 @@ public class JNDController extends PApplet {
 		 }
 		 
 		 delay(3000);
-		 setHapticResponce();
-		 
+		 setHapticResponce();	
+		 recalculate();
 	  }
 
 	  
@@ -159,26 +160,38 @@ public class JNDController extends PApplet {
 	  private void recalculate(){
 		  getAverage();
 		  getVariance();
-	  }
-	  
-	  public float getAverage(){
-		  float sum = 0.0f;
-		  for (int i=0; i<changeValues[currentTest].length; i++){
-			  sum = sum + changeValues[currentTest][i];
+		  for (int i = 0; i< averagesForJNDTest.length; i++){
+				  averagesForJNDTest[i][0] = refferenceValues[i];
+				  averagesForJNDTest[i][1] = (int) average[i];
 		  }
-		  average[currentTest] = sum/changeValues[currentTest].length;
-		  return average[currentTest];
 	  }
 	  
-	  public float getVariance(){
-		  float[] meanDifSquared = new float[changeValues[currentTest].length];
+	  public void getAverage(){
+		  
+		  for(int j = 0; j<changeValues.length; j++){
+			  float sum = 0.0f;
+		  for (int i=0; i<changeValues[j].length; i++){
+			  sum = sum + changeValues[j][i];
+		  }
+		  average[j] = sum/changeValues[j].length;
+		  }//return average[currentTest];
+	  }
+	  
+	  public void getVariance(){
+		  
+		  for(int j = 0; j<changeValues.length; j++){
+		  float[] meanDifSquared = new float[changeValues[j].length];
 		  float meanDifSquaredSum = 0.0f;
-		  for (int i=0; i<changeValues[currentTest].length; i++){
-			  meanDifSquared[i]= (float) Math.pow((average[currentTest]-changeValues[currentTest][i]), 2);
+		  for (int i=0; i<changeValues[j].length; i++){
+			  meanDifSquared[i]= (float) Math.pow((average[j]-changeValues[j][i]), 2);
 			  meanDifSquaredSum = meanDifSquaredSum + meanDifSquared[i];
 		  }
-		  variance[currentTest] = meanDifSquaredSum/(changeValues[currentTest].length-1);
-		  return variance[currentTest];
+		  variance[j] = meanDifSquaredSum/(changeValues[j].length-1);
+		  }//return variance[currentTest];
+	  }
+	  
+	  public int[][] getAveragesForJNDTest(){
+		  return averagesForJNDTest;
 	  }
 	  
 	  public void mouseReleased(){

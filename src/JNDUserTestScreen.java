@@ -13,7 +13,8 @@ public class JNDUserTestScreen extends PApplet {
 	Haptic scene; 
 	
 	
-	JNDUserTestScreen (){
+	JNDUserTestScreen (Arduino ard){
+		this.arduino = ard;
 		String[] a = {""};
 		PApplet.runSketch(a, this);
 	}
@@ -27,7 +28,7 @@ public class JNDUserTestScreen extends PApplet {
 	  
 	  public void setup(){
 		  
-		  arduino = new Arduino(this);
+		  
 		  myLeap = new Leap(width,height,100);
 		  Vector[] temp = myLeap.getIndexThumbPos();
 		  index = temp[0];

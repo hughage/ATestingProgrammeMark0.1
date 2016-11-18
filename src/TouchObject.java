@@ -8,6 +8,7 @@ public class TouchObject {
 	int posX, posY, size, r, g, b;
 	boolean contact = false;
 	int hapticResponce = 0;
+	String label = "";
 	
 	
 	TouchObject(int x, int y, int r, int g, int b, PApplet parent){
@@ -20,6 +21,20 @@ public class TouchObject {
 		this.size = p.height/3;
 	}
 	
+	TouchObject(int x, int y, int r, int g, int b, PApplet parent, String l){
+		this.posX=x;
+		this.posY=y;
+		this.r=r;
+		this.g=g;
+		this.b=b;
+		this.p = parent;
+		this.size = p.height/3;
+		this.label= l;
+	}
+	
+	
+	
+	@SuppressWarnings("static-access")
 	public void update(){
 		if(contact){
 			p.noFill();
@@ -29,6 +44,12 @@ public class TouchObject {
 			p.noStroke();
 		}
 		p.ellipse(posX,posY,size,size);
+		p.textAlign(p.CENTER, p.CENTER);
+		p.textSize(120);
+		p.fill(0,150);
+		p.text(label, posX, posY);
+		
+		p.noFill();
 	}
 	
 

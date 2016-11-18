@@ -112,9 +112,11 @@ public class Cursors {
 			p.strokeWeight(1);
 			p.stroke(100);
 			p.line(xPos, yPos, t.getX(), t.getY());
+			p.textSize(30);
+			p.fill(0,150);
 			p.text(mag3D, (Math.abs(xPos+t.getX()))/2, (Math.abs(yPos+t.getY()))/2);
 			p.noStroke();
-			
+			p.noFill();
 	}
 	
 	
