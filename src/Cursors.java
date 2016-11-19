@@ -7,7 +7,8 @@ public class Cursors {
 	PApplet p;
 	Vector position;
 	
-	boolean distanceLine = false;
+	boolean distanceLine = true;
+	boolean mag3D;
 	
 	int xSize = 10; //size of cursor
 	int ySize = 10;
@@ -107,14 +108,20 @@ public class Cursors {
 		
 	}
 	
+	public void drawMag3D (boolean b){
+		mag3D = b;
+	}
 	
-	public void drawDistanceLine(Vector t, float mag3D){
+	
+	public void drawDistanceLine(Vector t, float m){
 			p.strokeWeight(1);
 			p.stroke(100);
 			p.line(xPos, yPos, t.getX(), t.getY());
+			if (mag3D){
 			p.textSize(30);
 			p.fill(0,150);
-			p.text(mag3D, (Math.abs(xPos+t.getX()))/2, (Math.abs(yPos+t.getY()))/2);
+			p.text(m, (Math.abs(xPos+t.getX()))/2, (Math.abs(yPos+t.getY()))/2);
+			}
 			p.noStroke();
 			p.noFill();
 	}

@@ -22,7 +22,7 @@ public class JNDController extends PApplet {
 	float variance[] = new float[5];
 	int[][] averagesForJNDTest = new int[5][2];
 	
-	boolean delay = true;
+	//boolean delay = true;
 	
 	JNDController (Arduino ard){
 		String[] a = {""};
@@ -32,7 +32,7 @@ public class JNDController extends PApplet {
 	
 	
 	  public void settings() {
-			smooth(8);
+
 			size(500,500);
 		  }
 	  
@@ -61,10 +61,10 @@ public class JNDController extends PApplet {
 		  textSize(20);
 		  textAlign(CENTER, CENTER);
 		  
-		  if(delay){
-			  delay(3000);
-			  delay = false;	  
-		  } 
+//		  if(delay){
+//			  delay(3000);
+//			  delay = false;	  
+//		  } 
 		  
 
 		  text("Current Test Number: "+(currentTest+1) +"\nRefference Value: "+refferenceValues[currentTest], width/2, spaceing);

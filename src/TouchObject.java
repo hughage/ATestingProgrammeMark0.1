@@ -1,5 +1,4 @@
 import com.leapmotion.leap.Vector;
-
 import processing.core.PApplet;
 
 public class TouchObject {

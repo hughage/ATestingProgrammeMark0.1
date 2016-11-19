@@ -14,7 +14,7 @@ public class JNDTestController extends PApplet {
 	int currentTest = 0;
 	
 	int[][] averagesForJNDTest;
-	int[][] testsValues; 
+	int[][] testsValues; //for each average, test if people can identify the threshold value and the reff value [test number][reff,jnd,tester,result(reff or jnd)]
 	
 	int[] randomSelection;
 	
@@ -39,14 +39,17 @@ public class JNDTestController extends PApplet {
 		 spaceing = height/(spaces);
 		 quit = new Button(this,1,8,"Quit",height-(int)(spaceing*4));
 
-		 testsValues = new int[averagesForJNDTest.length*2][3]; //for each average, test if people can identify the threshold value and the reff value
+		 testsValues = new int[averagesForJNDTest.length*2][4]; //for each average, test if people can identify the threshold value and the reff value [test number][reff,jnd,tester,result(reff or jnd)]
 		 for(int i =0; i<averagesForJNDTest.length; i++){
 			 testsValues[i*2][0]= averagesForJNDTest[i][1];
 			 testsValues[i*2][1]= averagesForJNDTest[i][0];
-			 testsValues[i*2][2]= averagesForJNDTest[i][0];		 
+			 testsValues[i*2][2]= averagesForJNDTest[i][0];		
+			 testsValues[i*2][3]= 666;	
+			 //create the opposite test
 			 testsValues[(i*2)+1][0]= averagesForJNDTest[i][1];
 			 testsValues[(i*2)+1][1]= averagesForJNDTest[i][0];
 			 testsValues[(i*2)+1][2]= averagesForJNDTest[i][1];
+			 testsValues[(i*2)+1][3]= 666;
 		 }
 		 
 		 testsValues= shuffleArray(testsValues);	 
@@ -82,8 +85,12 @@ public class JNDTestController extends PApplet {
 			  text(testsValues[i][0], 2*(width/6),(5*spaceing)+(i*spaceing));
 			  text(testsValues[i][1], 3*(width/6),(5*spaceing)+(i*spaceing));
 			  text(testsValues[i][2], 4*(width/6),(5*spaceing)+(i*spaceing));
-			  text("-", 5*(width/6),(5*spaceing)+(i*spaceing));
-			  } 	  
+			  if(testsValues[i][3]==666){
+				  text("?", 5*(width/6),(5*spaceing)+(i*spaceing));
+			  } else {
+				  text(testsValues[i][3], 5*(width/6),(5*spaceing)+(i*spaceing));
+			  } 
+			  }	  
 		  
 		  quit.drawButton();	  
 	  }
@@ -113,6 +120,15 @@ public class JNDTestController extends PApplet {
 	  }
 	  
 	  public void keyPressed(){
+		  
+		  if (key == 'a'|| key == 'A'){
+			  testsValues[currentTest][3] = testsValues[currentTest][0];
+		  }
+		  
+		  if (key == 'b'|| key == 'B'){
+			  testsValues[currentTest][3] = testsValues[currentTest][1];
+		  }
+		  
 		  if (key == CODED) {
 		    if (keyCode == RIGHT) {
 

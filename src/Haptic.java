@@ -3,10 +3,16 @@ import com.leapmotion.leap.Vector;
 public class Haptic {
 	
 	TouchObject[] objects;
+	PinchObject pinchObject;
 	Arduino ard;
 	
 	Haptic(TouchObject[] o, Arduino a){
 		this.objects = o;
+		ard = a; 
+	}
+	
+	Haptic(PinchObject p, Arduino a){
+		this.pinchObject = p;
 		ard = a; 
 	}
 	
