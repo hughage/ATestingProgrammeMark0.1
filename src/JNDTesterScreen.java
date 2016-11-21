@@ -97,6 +97,7 @@ public class JNDTesterScreen extends PApplet {
 			  if(!g){
 			  this.noLoop();
 			  surface.setVisible(false);
+			  arduino.off();
 			  } else {
 				  this.loop();
 				  surface.setVisible(true);

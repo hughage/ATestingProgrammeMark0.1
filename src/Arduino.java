@@ -96,6 +96,26 @@ public class Arduino {
 		}	
 	}	
 	
+	public void setAB(int c[]){	
+		
+		int tempI = c[0];
+		int tempI2 = c[1];
+		
+		if (previousA != tempI || previousB != tempI2 ){
+			String send = "a"+tempI+"b"+tempI2+"=";
+			System.out.println("a"+tempI+"b"+tempI2+"= ");
+			stream.write(send);
+			printToScreen(send);
+			previousA = tempI;
+			previousB = tempI2;
+		}	
+	}	
+	
+	public void off(){
+		String send = "a0b0=";
+		stream.write(send);
+	}
+	
 	public void printToScreen(String t){
 		if(stringCount< cock.length-1){
 			stringCount++;

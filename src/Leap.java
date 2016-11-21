@@ -72,6 +72,10 @@ public class Leap {
 		thumbCorrected.setZ(zp+(zm*thumb.getZ()));
 	}
 	
+	public float pMaxscreenCorrected(float p){
+		return xm*p;
+	}
+	
 	public boolean inIdealVolume(){
 		boolean inIdeal = false;
 		if (inVol(thumb) && inVol(index)){

@@ -7,12 +7,16 @@ public class PinchUserScreen extends PApplet{
 	Arduino arduino;
 	Vector index, thumb;
 	Cursors iCursor, tCursor;
-	PinchObject pinchObject;
+	PinchObject pinchObjectR;
+	PinchObject pinchObjectL;
+	
+	float pMax; //value of the maximum hand pinch size from the grasp size class
 
-	PinchUserScreen(Arduino ard) {
+	PinchUserScreen(Arduino ard, float pinchMaxValue) {
 		this.arduino = ard;
 		String[] a = {""};
 		PApplet.runSketch(a, this);
+		this.pMax = pinchMaxValue;
 	}
 	
 	public void settings() {
@@ -27,8 +31,9 @@ public class PinchUserScreen extends PApplet{
 		  thumb = temp[1];
 		  iCursor = new  Cursors (232,123,234,this);
 		  tCursor = new  Cursors (123,123,234,this);
-		  iCursor.drawMag3D(false);
-		  pinchObject = new PinchObject (23,233,189, this);
+		  iCursor.drawMag3D(true);
+		  pinchObjectL = new PinchObject (23,233,189,0,width/2,255,0, 0.5f,myLeap.pMaxscreenCorrected(pMax), this);
+		  pinchObjectR = new PinchObject (23,233,189,width/2,width,150,0,0.2f, myLeap.pMaxscreenCorrected(pMax), this);
 		  
 	}
 	
@@ -46,10 +51,12 @@ public class PinchUserScreen extends PApplet{
 			 background(150); 
 		  }
 		  
+		  pinchObjectL.update(index, thumb);
+		  pinchObjectR.update(index, thumb);
+		  haptics();
 		  iCursor.update(index);	  
 		  tCursor.update(thumb);
-		  iCursor.drawDistanceLine(thumb, myLeap.index.distanceTo(myLeap.thumb));
-		  pinchObject.update(index, thumb);
+		  iCursor.drawDistanceLine(thumb, myLeap.index.distanceTo(myLeap.thumb));	  
 		  drawSeperatorDots();
 		
 	}
@@ -58,11 +65,25 @@ public class PinchUserScreen extends PApplet{
 		  if(!g){
 		  this.noLoop();
 		  surface.setVisible(false);
+		  arduino.off();
 		  } else {
 			  this.loop();
 			  surface.setVisible(true);
 		  }
 	  }
+	
+	public void haptics(){
+		if (pinchObjectL.onSide){	
+			arduino.setAB(pinchObjectL.getHapticResult()); 
+		} 
+		else if (pinchObjectR.onSide){	
+			arduino.setAB(pinchObjectR.getHapticResult()); 
+		} else {
+			arduino.off();
+		}
+		
+		
+	}
 	
 	public void drawSeperatorDots(){
 		int seperatorDots = 30; 

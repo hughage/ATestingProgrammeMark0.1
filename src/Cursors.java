@@ -8,7 +8,7 @@ public class Cursors {
 	Vector position;
 	
 	boolean distanceLine = true;
-	boolean mag3D;
+	boolean mag3D = true ;
 	
 	int xSize = 10; //size of cursor
 	int ySize = 10;
