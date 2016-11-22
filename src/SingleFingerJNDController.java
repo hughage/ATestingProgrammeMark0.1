@@ -1,82 +1,96 @@
 import processing.core.PApplet;
 
+public class SingleFingerJNDController extends PApplet {
 
-public class PinchController  extends PApplet{
-	
-	PinchUserScreen pinchUserScreen;
+	SingleFingerJNDUserScreen userTestScreen;
 	Button quit;
+	
+	int[][] changeValues;
+	int jndTests = 5; //number of reference tests 255-0, 255-50, 255-100, 255-150, 255-200
+	int jndSubTests = 5; // number of tests in each reference test
+	int currentTest = 0; // which reference test 255-0, 255-50, 255-100, 255-150, 255-200
+	int currentSubTest = 0; //which repeat for test 1,2,3,4,5;
+	int testValue = 0; // value for increase of base PWM value;
+	int pwmMaxValue =255;
+	int refferenceValues[] = {0,50,100,150,200};
 	
 	int spaceing = 0;
 	int spaces = 8;
-	float pMax; //value of the maximum hand pinch size from the grasp size class
-
-	int[][] changeValues; //a 3 by 5 array to store my test values
-	int jndTests = 3; //number of reference tests 255-0, 255-50, 255-100, 255-150, 255-200
-	int jndSubTests = 5; // number of tests in each reference test
-	int currentTest = 0; // which reference test 255-0, 255-50, 255-100, 255-150, 255-200
-	int currentSubTest = 0; //which repeat for test 1,2,3,4,5
-	int pwmMaxValue =255; //maximum output (255 = 5V)
-	int refferenceValues[] = {100,150,200}; // change to 0,50,100 for DEA version
-	float average[] = new float[3]; //store my average pinch jnd values
-	float variance[] = new float[3];
-	int[][] averagesForJNDTest = new int[3][2];
+	float currentGraspDistance = 0.0f;
+	float average[] = new float[5];
+	float variance[] = new float[5];
+	int[][] averagesForJNDTest = new int[5][2];
 	
+	//boolean delay = true;
 	
-	
-	PinchController(float average, Arduino ard) {
+	SingleFingerJNDController (Arduino ard){
 		String[] a = {""};
 		PApplet.runSketch(a, this);
-		pinchUserScreen = new PinchUserScreen(ard, average);
-		this.pMax = average;
+		userTestScreen = new SingleFingerJNDUserScreen(ard);
 	}
 	
-	public void settings() {
-		size(500,500);
-	}
 	
-	public void setup(){
-		changeValues = new int[jndTests][jndSubTests];
-		for (int i=0; i< changeValues.length; i++){
+	  public void settings() {
+			size(500,500);
+		  }
+	  
+	  
+	  public void setup(){
+		  changeValues = new int[jndTests][jndSubTests];
+		  spaceing = height/(changeValues.length+spaces);
+		  quit = new Button(this,1,8,"Quit",height-(int)((float)spaceing*2));
+		  
+		 for (int i=0; i< changeValues.length; i++){
 			 for (int j = 0; j<changeValues[i].length; j++){
 				 changeValues[i][j]=refferenceValues[i];
 			 }
 		 }
 		 
-		background(255);
-		spaceing = height/(changeValues.length+spaces);
-		quit = new Button(this,1,8,"Quit",height-(int)((float)spaceing*1.5f));
-		delay(3000);
-		//setHapticResponce();	
-		recalculate();	
-	}
-	
-	public void draw() {
-		background(255);	  	  
-		fill(0);
-		textSize(20);
-		textAlign(CENTER, CENTER);
-		
-		text("Current Test Number: "+(currentTest+1) +"\nRefference Value: "+refferenceValues[currentTest], width/2, spaceing);
-		
-		for (int i=0; i<jndSubTests; i++){
+		 delay(3000);
+		 setHapticResponce();	
+		 recalculate();
+	  }
+
+	  
+	  public void draw() {
+		  background(255);	  
+		  
+		  fill(0);
+		  textSize(20);
+		  textAlign(CENTER, CENTER);
+		  
+//		  if(delay){
+//			  delay(3000);
+//			  delay = false;	  
+//		  } 
+		  
+
+		  text("Current Test Number: "+(currentTest+1) +"\nRefference Value: "+refferenceValues[currentTest], width/2, spaceing);
+		  
+		  
+		  text("Test Number: ", width/3, 3*spaceing);
+		  text("Results", 2*(width/3), 3*spaceing);
+		  
+		  for (int i=0; i<changeValues.length; i++){
 			  if(i==currentSubTest){
 				  fill(230,130,20);
 			  } 
-			  text(i+1, width/3, (i+3)*spaceing);
-			  text(changeValues[currentTest][i], 2*(width/3), (i+3)*spaceing); 
+			  text(i+1, width/3, (i+4)*spaceing);
+			  text(changeValues[currentTest][i], 2*(width/3), (i+4)*spaceing); 
 			  fill(0);
 		  }
-		
-		  text("Average:", width/3, (changeValues.length+5)*spaceing);
-		  text(average[currentTest], 2*(width/3), (changeValues.length+5)*spaceing);
 		  
-		  text("Variance:", width/3, (changeValues.length+6)*spaceing);
-		  text(variance[currentTest], 2*(width/3), (changeValues.length+6)*spaceing);
+		  text("Average:", width/3, (changeValues.length+4)*spaceing);
+		  text(average[currentTest], 2*(width/3), (changeValues.length+4)*spaceing);
 		  
-		
-		quit.drawButton();
-	}
-	
+		  text("Variance:", width/3, (changeValues.length+5)*spaceing);
+		  text(variance[currentTest], 2*(width/3), (changeValues.length+5)*spaceing);
+		  
+		  quit.drawButton();
+		  
+	  }
+
+	  
 	  public void keyReleased(){
 		  if (key == '1') {
 			  currentTest = 0;	      
@@ -87,7 +101,12 @@ public class PinchController  extends PApplet{
 		  if (key == '3') {
 			  currentTest = 2;		      
 		    }
-
+		  if (key == '4') {
+			  currentTest = 3;
+		    }
+		  if (key == '5') {
+			  currentTest = 4;
+		    }
 		  
 		  if (key == CODED) {
 			    if (keyCode == DOWN) {
@@ -133,7 +152,7 @@ public class PinchController  extends PApplet{
 	  
 	  
 	  private void setHapticResponce(){
-		  pinchUserScreen.setHapticResponce(changeValues[currentTest][currentSubTest],0,refferenceValues[currentTest],0); //setValue range
+		  userTestScreen.setHapticResponce(changeValues[currentTest][currentSubTest],refferenceValues[currentTest]);
 	  }
 	  
 	  private void recalculate(){
@@ -185,17 +204,22 @@ public class PinchController  extends PApplet{
 			  //quit.isSelected = true;
 		  }
 	  }
-	
-	public void running(boolean g){
-		if(!g){
-			this.noLoop();
-			surface.setVisible(false);
-			pinchUserScreen.running(false);
-		} else {
-			this.loop();
-			surface.setVisible(true);
-			pinchUserScreen.running(true);
+
+	  
+	  public void running(boolean g){
+		  if(!g){
+		  this.noLoop();
+		  surface.setVisible(false);
+		  userTestScreen.running(false);
+		  } else {
+			  this.loop();
+			  surface.setVisible(true);
+			  userTestScreen.running(true);
 		  }
 	  }
-
+	  
+	  
+	  
 }
+
+

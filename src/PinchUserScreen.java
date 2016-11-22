@@ -33,7 +33,7 @@ public class PinchUserScreen extends PApplet{
 		  tCursor = new  Cursors (123,123,234,this);
 		  iCursor.drawMag3D(true);
 		  pinchObjectL = new PinchObject (23,233,189,0,width/2,255,0, 0.5f,myLeap.pMaxscreenCorrected(pMax), this);
-		  pinchObjectR = new PinchObject (23,233,189,width/2,width,150,0,0.2f, myLeap.pMaxscreenCorrected(pMax), this);
+		  pinchObjectR = new PinchObject (23,233,189,width/2,width,150,0,0.5f, myLeap.pMaxscreenCorrected(pMax), this);
 		  
 	}
 	
@@ -80,10 +80,13 @@ public class PinchUserScreen extends PApplet{
 			arduino.setAB(pinchObjectR.getHapticResult()); 
 		} else {
 			arduino.off();
-		}
-		
-		
+		}	
 	}
+	
+	public void setHapticResponce(int changeTop, int changeBottom, int reffTop, int reffBottom){
+		pinchObjectL.setHapticResultBounds(changeTop, changeBottom);
+		pinchObjectR.setHapticResultBounds(reffTop,reffBottom);
+	  }
 	
 	public void drawSeperatorDots(){
 		int seperatorDots = 30; 

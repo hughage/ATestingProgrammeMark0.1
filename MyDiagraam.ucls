@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="Button" project="ATestingProgrammeMark0.1" 
     file="/ATestingProgrammeMark0.1/src/Button.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="413" y="1076"/>    
+    <position height="335" width="195" x="692" y="1769"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="Output" project="ATestingProgrammeMark0.1" 
     file="/ATestingProgrammeMark0.1/src/Output.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="83" width="98" x="412" y="332"/>    
+    <position height="83" width="98" x="657" y="590"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="Test" project="ATestingProgrammeMark0.1" 
     file="/ATestingProgrammeMark0.1/src/Test.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="155" width="131" x="379" y="137"/>    
+    <position height="155" width="131" x="394" y="395"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="Haptic" project="ATestingProgrammeMark0.1" 
     file="/ATestingProgrammeMark0.1/src/Haptic.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="783" y="1857"/>    
+    <position height="137" width="232" x="582" y="2144"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="JNDUserTestScreen" project="ATestingProgrammeMark0.1" 
     file="/ATestingProgrammeMark0.1/src/JNDUserTestScreen.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="742" y="1628"/>    
+    <position height="227" width="196" x="927" y="1769"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="JNDController" project="ATestingProgrammeMark0.1" 
     file="/ATestingProgrammeMark0.1/src/JNDController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="673" y="1208"/>    
+    <position height="551" width="196" x="735" y="1178"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="Leap" project="ATestingProgrammeMark0.1" 
     file="/ATestingProgrammeMark0.1/src/Leap.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="479" width="184" x="940" y="1850"/>    
+    <position height="497" width="204" x="1135" y="2144"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -66,7 +66,7 @@
   </class>  
   <class id="8" language="java" name="PinchMaxTest" project="ATestingProgrammeMark0.1" 
     file="/ATestingProgrammeMark0.1/src/PinchMaxTest.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1058" y="1569"/>    
+    <position height="191" width="131" x="1402" y="1769"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,7 +75,7 @@
   </class>  
   <class id="9" language="java" name="GraspTestController" project="ATestingProgrammeMark0.1" 
     file="/ATestingProgrammeMark0.1/src/GraspTestController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="950" y="1122"/>    
+    <position height="353" width="174" x="971" y="1178"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -84,348 +84,698 @@
   </class>  
   <class id="10" language="java" name="ControlWindow" project="ATestingProgrammeMark0.1" 
     file="/ATestingProgrammeMark0.1/src/ControlWindow.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="227" width="150" x="726" y="653"/>    
+    <position height="227" width="150" x="971" y="911"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="User" project="ATestingProgrammeMark0.1" 
+  <class id="11" language="java" name="JNDTestController" project="ATestingProgrammeMark0.1" 
+    file="/ATestingProgrammeMark0.1/src/JNDTestController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="371" width="206" x="203" y="1178"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="PinchController" project="ATestingProgrammeMark0.1" 
+    file="/ATestingProgrammeMark0.1/src/PinchController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="533" width="196" x="1185" y="1178"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="SingleFingerJNDController" project="ATestingProgrammeMark0.1" 
+    file="/ATestingProgrammeMark0.1/src/SingleFingerJNDController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="551" width="225" x="449" y="1178"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="User" project="ATestingProgrammeMark0.1" 
     file="/ATestingProgrammeMark0.1/src/User.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="281" width="136" x="550" y="332"/>    
+    <position height="281" width="136" x="795" y="590"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="MyWindow" project="ATestingProgrammeMark0.1" 
+  <class id="15" language="java" name="MyWindow" project="ATestingProgrammeMark0.1" 
     file="/ATestingProgrammeMark0.1/src/MyWindow.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="83" width="99" x="726" y="332"/>    
+    <position height="83" width="99" x="971" y="590"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="Arduino" project="ATestingProgrammeMark0.1" 
+  <class id="16" language="java" name="PinchUserScreen" project="ATestingProgrammeMark0.1" 
+    file="/ATestingProgrammeMark0.1/src/PinchUserScreen.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="263" width="228" x="1573" y="1769"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="PinchObject" project="ATestingProgrammeMark0.1" 
+    file="/ATestingProgrammeMark0.1/src/PinchObject.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="677" width="307" x="1573" y="2681"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="SingleFingerJNDUserScreen" project="ATestingProgrammeMark0.1" 
+    file="/ATestingProgrammeMark0.1/src/SingleFingerJNDUserScreen.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="209" width="236" x="416" y="1769"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="Arduino" project="ATestingProgrammeMark0.1" 
     file="/ATestingProgrammeMark0.1/src/Arduino.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="389" width="169" x="665" y="2369"/>    
+    <position height="425" width="169" x="835" y="2681"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="TouchObject" project="ATestingProgrammeMark0.1" 
+  <class id="20" language="java" name="TouchObject" project="ATestingProgrammeMark0.1" 
     file="/ATestingProgrammeMark0.1/src/TouchObject.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="281" width="226" x="874" y="2369"/>    
+    <position height="371" width="261" x="458" y="2681"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="ATestingMain" project="ATestingProgrammeMark0.1" 
+  <class id="21" language="java" name="ATestingMain" project="ATestingProgrammeMark0.1" 
     file="/ATestingProgrammeMark0.1/src/ATestingMain.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="101" width="125" x="550" y="137"/>    
+    <position height="101" width="125" x="795" y="395"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="GraspSizeTest" project="ATestingProgrammeMark0.1" 
+  <class id="22" language="java" name="GraspSizeTest" project="ATestingProgrammeMark0.1" 
     file="/ATestingProgrammeMark0.1/src/GraspSizeTest.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="299" width="199" x="1227" y="1475"/>    
+    <position height="299" width="199" x="1163" y="1769"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="Cursors" project="ATestingProgrammeMark0.1" 
+  <class id="23" language="java" name="Cursors" project="ATestingProgrammeMark0.1" 
     file="/ATestingProgrammeMark0.1/src/Cursors.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="389" width="220" x="1227" y="1850"/>    
+    <position height="425" width="220" x="875" y="2144"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="18">    
+  <class id="24" language="java" name="JNDTesterScreen" project="ATestingProgrammeMark0.1" 
+    file="/ATestingProgrammeMark0.1/src/JNDTesterScreen.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="245" width="212" x="164" y="1769"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="25">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="26" name="quit"/>      
+      <multiplicity id="27" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="28">    
+    <bendpoint x="1432" y="2144"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="29" name="arduino"/>      
+      <multiplicity id="30" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="31">    
     <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="19" name="tCursor"/>      
-      <multiplicity id="20" minimum="0" maximum="1"/>    
+      <attribute id="32" name="tCursor"/>      
+      <multiplicity id="33" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="34">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="35" name="myLeap"/>      
+      <multiplicity id="36" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="37">    
+    <bendpoint x="551" y="2144"/>    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="38" name="objects"/>      
+      <multiplicity id="39" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="40">    
+    <bendpoint x="1213" y="2144"/>    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="41" name="arduino"/>      
+      <multiplicity id="42" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="43">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="44" name="quit"/>      
+      <multiplicity id="45" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="46">    
+    <bendpoint x="446" y="2144"/>    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="47" name="objects"/>      
+      <multiplicity id="48" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="49">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="50" name="userTestScreen"/>      
+      <multiplicity id="51" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="52">    
+    <bendpoint x="509" y="2144"/>    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="53" name="right"/>      
+      <multiplicity id="54" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="55">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="56" name="myLeap"/>      
+      <multiplicity id="57" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="58">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="59" name="iCursor"/>      
+      <multiplicity id="60" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="61">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="62" name="myLeap"/>      
+      <multiplicity id="63" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="64">    
+    <bendpoint x="488" y="2144"/>    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="65" name="arduino"/>      
+      <multiplicity id="66" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="67">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="68" name="pinchObject"/>      
+      <multiplicity id="69" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="17" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="21">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="22" name="myLeap"/>      
-      <multiplicity id="23" minimum="0" maximum="1"/>    
+  <association id="70">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="71" name="quit"/>      
+      <multiplicity id="72" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="24">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="25" name="myLeap"/>      
-      <multiplicity id="26" minimum="0" maximum="1"/>    
+  <association id="73">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="74" name="quit"/>      
+      <multiplicity id="75" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="27">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="28" name="graspSizeTest"/>      
-      <multiplicity id="29" minimum="0" maximum="1"/>    
+  <association id="76">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="77" name="pinchUserScreen"/>      
+      <multiplicity id="78" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="16" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="30">    
+  <association id="79">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="80" name="tCursor"/>      
+      <multiplicity id="81" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="82">    
+    <bendpoint x="425" y="2144"/>    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="83" name="left"/>      
+      <multiplicity id="84" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="85">    
+    <bendpoint x="844" y="2144"/>    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="31" name="myLeap"/>      
-      <multiplicity id="32" minimum="0" maximum="1"/>    
+      <attribute id="86" name="arduino"/>      
+      <multiplicity id="87" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
+    <end type="TARGET" refId="19" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="33">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="34" name="graspTestController"/>      
-      <multiplicity id="35" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="36">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="37" name="user"/>      
-      <multiplicity id="38" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="39">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="40" name="objects"/>      
-      <multiplicity id="41" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="42">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="43" name="iCursor"/>      
-      <multiplicity id="44" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="45">    
-    <bendpoint x="595" y="1850"/>    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="46" name="objects"/>      
-      <multiplicity id="47" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="48">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="49" name="scene"/>      
-      <multiplicity id="50" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="51">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="52" name="tCursor"/>      
-      <multiplicity id="53" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="54">    
-    <bendpoint x="553" y="1850"/>    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="55" name="arduino"/>      
-      <multiplicity id="56" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="57">    
+  <association id="88">    
+    <bendpoint x="1390" y="2144"/>    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="58" name="iCursor"/>      
-      <multiplicity id="59" minimum="0" maximum="1"/>    
+      <attribute id="89" name="objects"/>      
+      <multiplicity id="90" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
+    <end type="TARGET" refId="20" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="60">    
-    <bendpoint x="574" y="1850"/>    
+  <association id="91">    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="61" name="right"/>      
-      <multiplicity id="62" minimum="0" maximum="1"/>    
+      <attribute id="92" name="iCursor"/>      
+      <multiplicity id="93" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
+    <end type="TARGET" refId="23" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="63">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="64" name="finish"/>      
-      <multiplicity id="65" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="66">    
-    <bendpoint x="1196" y="1850"/>    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="67" name="right"/>      
-      <multiplicity id="68" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="69">    
+  <association id="94">    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="70" name="userTestScreen"/>      
-      <multiplicity id="71" minimum="0" maximum="1"/>    
+      <attribute id="95" name="userTestScreen"/>      
+      <multiplicity id="96" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="72">    
-    <bendpoint x="616" y="1850"/>    
+  <association id="97">    
+    <bendpoint x="351" y="2144"/>    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="98" name="middle"/>      
+      <multiplicity id="99" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="100">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="101" name="tCursor"/>      
+      <multiplicity id="102" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="103">    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="73" name="left"/>      
-      <multiplicity id="74" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="75">    
-    <bendpoint x="1175" y="1850"/>    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="76" name="objects"/>      
-      <multiplicity id="77" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="78">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="79" name="tCursor"/>      
-      <multiplicity id="80" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="81">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="82" name="quit"/>      
-      <multiplicity id="83" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="84">    
-    <bendpoint x="909" y="1850"/>    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="85" name="arduino"/>      
-      <multiplicity id="86" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="87">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="88" name="scene"/>      
-      <multiplicity id="89" minimum="0" maximum="1"/>    
+      <attribute id="104" name="scene"/>      
+      <multiplicity id="105" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="90">    
-    <bendpoint x="532" y="920"/>    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="91" name="buttons"/>      
-      <multiplicity id="92" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="93">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="94" name="ard"/>      
-      <multiplicity id="95" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="96">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="97" name="myWindows"/>      
-      <multiplicity id="98" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="99">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="100" name="output"/>      
-      <multiplicity id="101" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="102">    
+  <association id="106">    
+    <bendpoint x="1582" y="2144"/>    
     <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="103" name="iCursor"/>      
-      <multiplicity id="104" minimum="0" maximum="1"/>    
+      <attribute id="107" name="pinchObjectR"/>      
+      <multiplicity id="108" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="17" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="105">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="106" name="con"/>      
-      <multiplicity id="107" minimum="0" maximum="1"/>    
+  <association id="109">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="110" name="finish"/>      
+      <multiplicity id="111" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="108">    
-    <bendpoint x="981" y="920"/>    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="109" name="pinchMaxTest"/>      
-      <multiplicity id="110" minimum="0" maximum="1"/>    
+  <association id="112">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="113" name="tCursor"/>      
+      <multiplicity id="114" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
+    <end type="TARGET" refId="23" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="111">    
+  <association id="115">    
     <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="112" name="jndController"/>      
-      <multiplicity id="113" minimum="0" maximum="1"/>    
+      <attribute id="116" name="pinchController"/>      
+      <multiplicity id="117" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="118">    
+    <bendpoint x="404" y="2144"/>    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="119" name="arduino"/>      
+      <multiplicity id="120" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="121">    
+    <bendpoint x="704" y="1178"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="122" name="buttons"/>      
+      <multiplicity id="123" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="124">    
+    <bendpoint x="330" y="2144"/>    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="125" name="right"/>      
+      <multiplicity id="126" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="127">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="128" name="ard"/>      
+      <multiplicity id="129" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="130">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="131" name="scene"/>      
+      <multiplicity id="132" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="133">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="134" name="scene"/>      
+      <multiplicity id="135" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="136">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="137" name="user"/>      
+      <multiplicity id="138" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="139">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="140" name="jndController"/>      
+      <multiplicity id="141" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="114">    
-    <bendpoint x="1154" y="1850"/>    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="115" name="left"/>      
-      <multiplicity id="116" minimum="0" maximum="1"/>    
+  <association id="142">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="143" name="singleFingerJNDController"/>      
+      <multiplicity id="144" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="145">    
+    <bendpoint x="467" y="2144"/>    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="146" name="right"/>      
+      <multiplicity id="147" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="148">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="149" name="iCursor"/>      
+      <multiplicity id="150" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="151">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="152" name="tCursor"/>      
+      <multiplicity id="153" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="154">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="155" name="con"/>      
+      <multiplicity id="156" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="157">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="158" name="jndTestController"/>      
+      <multiplicity id="159" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="160">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="161" name="iCursor"/>      
+      <multiplicity id="162" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="163">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="164" name="output"/>      
+      <multiplicity id="165" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="166">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="167" name="myLeap"/>      
+      <multiplicity id="168" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="169">    
+    <bendpoint x="309" y="2144"/>    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="170" name="objects"/>      
+      <multiplicity id="171" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="172">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="173" name="graspSizeTest"/>      
+      <multiplicity id="174" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="175">    
+    <bendpoint x="288" y="2144"/>    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="176" name="left"/>      
+      <multiplicity id="177" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="178">    
+    <bendpoint x="530" y="2144"/>    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="179" name="left"/>      
+      <multiplicity id="180" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="181">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="182" name="scene"/>      
+      <multiplicity id="183" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="184">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="185" name="objects"/>      
+      <multiplicity id="186" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="187">    
+    <bendpoint x="1411" y="1178"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="188" name="pinchMaxTest"/>      
+      <multiplicity id="189" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="190">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="191" name="myWindows"/>      
+      <multiplicity id="192" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="193">    
+    <bendpoint x="1369" y="2144"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="194" name="left"/>      
+      <multiplicity id="195" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="196">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="197" name="graspTestController"/>      
+      <multiplicity id="198" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="199">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="200" name="myLeap"/>      
+      <multiplicity id="201" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="202">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="203" name="jndTesterScreen"/>      
+      <multiplicity id="204" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="205">    
+    <bendpoint x="1411" y="2144"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="206" name="right"/>      
+      <multiplicity id="207" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="208">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="209" name="tCursor"/>      
+      <multiplicity id="210" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="211">    
+    <bendpoint x="1831" y="1178"/>    
+    <bendpoint x="1831" y="1769"/>    
+    <bendpoint x="1561" y="2144"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="212" name="arduino"/>      
+      <multiplicity id="213" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="214">    
+    <bendpoint x="1603" y="2144"/>    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="215" name="pinchObjectL"/>      
+      <multiplicity id="216" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="217">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="218" name="iCursor"/>      
+      <multiplicity id="219" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="220">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="221" name="myLeap"/>      
+      <multiplicity id="222" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="223">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="224" name="iCursor"/>      
+      <multiplicity id="225" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

@@ -4,13 +4,16 @@ public class ControlWindow extends PApplet {
 	
 	Arduino arduino;
 	
-	String[] windows = {"Grasp Size Test", "JND", "JNDTester", "Pinch Test", "Pinch Test Tester", "Print Results", "Quit"};
+	String[] windows = {"Single Finger JND","Grasp Size Test", "JND", "JNDTester", "Pinch Test", "Deluxe Curve Ball", "Print Results", "Quit"};
 	boolean initiated[];
+	
+	SingleFingerJNDController singleFingerJNDController;
 	GraspTestController graspTestController;
 	PinchMaxTest pinchMaxTest;
 	JNDController jndController;
 	JNDTestController jndTestController;
 	PinchController pinchController;
+
 	
 	int butWidth;
 	int butHeight;
@@ -68,8 +71,17 @@ public class ControlWindow extends PApplet {
 		 
 		 case 0:
 			 break;
-		 
+			 
 		 case 1: 
+			 if (!initiated[selector]){
+				 singleFingerJNDController = new SingleFingerJNDController(arduino);
+				 initiated[selector] = true;
+			 } if(initiated[selector]){
+				 singleFingerJNDController.running(true);
+			 }
+		 break;
+		 
+		 case 2: 
 			 if (!initiated[selector]){
 				 graspTestController = new GraspTestController();
 				 initiated[selector] = true;
@@ -78,7 +90,7 @@ public class ControlWindow extends PApplet {
 			 }
 		 break;
 		 
-		 case 2: 
+		 case 3: 
 			 if (!initiated[selector]){
 				 jndController = new  JNDController(arduino);
 				 initiated[selector] = true;
@@ -87,7 +99,7 @@ public class ControlWindow extends PApplet {
 			 }
 		 break;
 		 
-		 case 3: 
+		 case 4: 
 			 if (!initiated[selector] && initiated[selector-1]){		 
 				 jndTestController = new JNDTestController(jndController.getAveragesForJNDTest(), arduino);
 				 initiated[selector] = true;
@@ -96,7 +108,7 @@ public class ControlWindow extends PApplet {
 			 }
 		 break;
 		 
-		 case 4: 
+		 case 5: 
 			 if (!initiated[selector] && initiated[1]){	
 				 pinchController = new PinchController (graspTestController.getAverage(), arduino);
 				 initiated[selector] = true;
@@ -106,7 +118,7 @@ public class ControlWindow extends PApplet {
 		 break;
 		 
 		
-		 case 7: exit();
+		 case 8: exit();
 		 break;
 
 		 
