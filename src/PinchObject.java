@@ -20,6 +20,8 @@ public class PinchObject {
 	float ramp; //ramp is a scaler used scale the speed at which force is applied based on object penetration, it is a ratio of the screen corrected pMax value.
 	boolean onSide;
 	
+	boolean visualLimit = true;
+	
 	
 	PinchObject(int r, int g, int b, PApplet parent){
 		this.r=r;
@@ -82,7 +84,7 @@ public class PinchObject {
 		posY = (int)((i.getY()+t.getY())/2.0f);	
 		if(pinchDistance<pinchUpperThreshold){
 			rotation = p.atan2(i.getY() - t.getY(), i.getX() - t.getX()); //i.angleTo(t);
-			if (pinchDistance<pinchLowerThreshold){
+			if (pinchDistance<pinchLowerThreshold && visualLimit){
 				yMag = (int)pinchLowerThreshold;
 				} else{
 					yMag = (int)(pinchDistance);	
@@ -105,9 +107,17 @@ public class PinchObject {
 		this.minimumHapticResult = minHR;
 	}
 	
+	public float getRamp(){
+		return ramp;
+	}
+	
 	public void setRamp(float r){
 		this.ramp = r;
 		pinchLowerThreshold = (pinchThresholdScaler*pMax)-(pMax*ramp);
+	}
+	
+	public void setVisualLimit(boolean v){
+		this.visualLimit = v;
 	}
 	
 	public int[] getHapticResult(){

@@ -4,15 +4,17 @@ public class ControlWindow extends PApplet {
 	
 	Arduino arduino;
 	
-	String[] windows = {"Single Finger JND","Grasp Size Test", "JND", "JNDTester", "Pinch Test", "Deluxe Curve Ball", "Print Results", "Quit"};
+	String[] windows = {"Single Finger JND", "Single Finger JND Tester ", "Multi Finger JND", "Multi Finger JND Tester","Grasp Size Test", "Pinch Test", "Pinch Test 2", "Print Results", "Quit"};
 	boolean initiated[];
 	
 	SingleFingerJNDController singleFingerJNDController;
+	SingleFingerJNDTesterController singleFingerJNDTesterController;
 	GraspTestController graspTestController;
-	PinchMaxTest pinchMaxTest;
 	JNDController jndController;
 	JNDTestController jndTestController;
 	PinchController pinchController;
+	PinchController2 pinchController2;
+	Output out;
 
 	
 	int butWidth;
@@ -35,7 +37,7 @@ public class ControlWindow extends PApplet {
 		  
 		  arduino = new Arduino(this);
 		  
-		  initiated = new boolean[windows.length-1];
+		  initiated = new boolean[windows.length];
 		  for (int i =0; i<initiated.length; i++){
 			  initiated[i]=false;
 		  }
@@ -82,11 +84,11 @@ public class ControlWindow extends PApplet {
 		 break;
 		 
 		 case 2: 
-			 if (!initiated[selector]){
-				 graspTestController = new GraspTestController();
+			 if (!initiated[selector] && initiated[selector-1]){		
+				 singleFingerJNDTesterController = new SingleFingerJNDTesterController(singleFingerJNDController.getAveragesForJNDTest(), arduino);
 				 initiated[selector] = true;
-			 } if(initiated[selector]){
-				 graspTestController.running(true);
+			 } if(initiated[selector]) {
+				 singleFingerJNDTesterController.running(true);
 			 }
 		 break;
 		 
@@ -109,7 +111,16 @@ public class ControlWindow extends PApplet {
 		 break;
 		 
 		 case 5: 
-			 if (!initiated[selector] && initiated[1]){	
+			 if (!initiated[selector]){
+				 graspTestController = new GraspTestController();
+				 initiated[selector] = true;
+			 } if(initiated[selector]){
+				 graspTestController.running(true);
+			 }
+		 break;
+		 
+		 case 6: 
+			 if (!initiated[selector] && initiated[selector-1]){	
 				 pinchController = new PinchController (graspTestController.getAverage(), arduino);
 				 initiated[selector] = true;
 			 } if(initiated[selector]) {
@@ -117,8 +128,29 @@ public class ControlWindow extends PApplet {
 			 }
 		 break;
 		 
+		 case 7: 
+			 if (!initiated[selector] && initiated[selector-2]){	
+				 pinchController2 = new PinchController2 (graspTestController.getAverage(), arduino);
+				 initiated[selector] = true;
+			 } if(initiated[selector]) {
+				 pinchController2.running(true);
+			 }
+		 break;
+		 
+		 case 8: 
+			 if (!initiated[selector]){	
+				 out = new Output();
+				 out.setGraspSizeResults(graspTestController);
+				 out.setSingleFingerJNDController(singleFingerJNDController);
+				 out.setJNDControllerResults(jndController);
+				 out.close();
+				 initiated[selector] = true;
+			 } if(initiated[selector]) {
+				 
+			 }
+		 break;
 		
-		 case 8: exit();
+		 case 9: exit();
 		 break;
 
 		 

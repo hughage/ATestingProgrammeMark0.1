@@ -8,7 +8,7 @@ public class JNDController extends PApplet {
 	
 	int[][] changeValues;
 	int jndTests = 5; //number of reference tests 255-0, 255-50, 255-100, 255-150, 255-200
-	int jndSubTests = 5; // number of tests in each reference test
+	int jndSubTests = 3; // number of tests in each reference test
 	int currentTest = 0; // which reference test 255-0, 255-50, 255-100, 255-150, 255-200
 	int currentSubTest = 0; //which repeat for test 1,2,3,4,5;
 	int testValue = 0; // value for increase of base PWM value;
@@ -73,7 +73,7 @@ public class JNDController extends PApplet {
 		  text("Test Number: ", width/3, 3*spaceing);
 		  text("Results", 2*(width/3), 3*spaceing);
 		  
-		  for (int i=0; i<changeValues.length; i++){
+		  for (int i=0; i<changeValues[i].length; i++){
 			  if(i==currentSubTest){
 				  fill(230,130,20);
 			  } 

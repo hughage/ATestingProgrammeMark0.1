@@ -1,32 +1,32 @@
 import processing.core.PApplet;
 
 
-public class PinchController  extends PApplet{
+public class PinchController2  extends PApplet{
 	
-	PinchUserScreen pinchUserScreen;
+	PinchUserScreen2 pinchUserScreen2;
 	Button quit;
 	
 	int spaceing = 0;
 	int spaces = 8;
 	float pMax; //value of the maximum hand pinch size from the grasp size class
 
-	int[][] changeValues; //a 3 by 3 array to store my test values
+	float[][] changeValues; //a 3 by 5 array to store my test values
 	int jndTests = 3; //number of reference tests 255-0, 255-50, 255-100, 255-150, 255-200
 	int jndSubTests = 3; // number of tests in each reference test
 	int currentTest = 0; // which reference test 255-0, 255-50, 255-100, 255-150, 255-200
 	int currentSubTest = 0; //which repeat for test 1,2,3,4,5
-	int pwmMaxValue =255; //maximum output (255 = 5V)
-	int refferenceValues[] = {100,150,200}; // change to 0,50,100 for DEA version
+	float pwmMaxValue = 0.5f; //maximum output (255 = 5V)
+	int refferenceValues[] = {255,205,155}; // change to 0,50,100 for DEA version
 	float average[] = new float[3]; //store my average pinch jnd values
 	float variance[] = new float[3];
 	int[][] averagesForJNDTest = new int[3][2];
 	
 	
 	
-	PinchController(float average, Arduino ard) {
+	PinchController2(float average, Arduino ard) {
 		String[] a = {""};
 		PApplet.runSketch(a, this);
-		pinchUserScreen = new PinchUserScreen(ard, average);
+		pinchUserScreen2 = new PinchUserScreen2(ard, average);
 		this.pMax = average;
 	}
 	
@@ -35,10 +35,10 @@ public class PinchController  extends PApplet{
 	}
 	
 	public void setup(){
-		changeValues = new int[jndTests][jndSubTests];
+		changeValues = new float[jndTests][jndSubTests];
 		for (int i=0; i< changeValues.length; i++){
 			 for (int j = 0; j<changeValues[i].length; j++){
-				 changeValues[i][j]=refferenceValues[i];
+				 changeValues[i][j]=0.5f;
 			 }
 		 }
 		 
@@ -72,7 +72,8 @@ public class PinchController  extends PApplet{
 		  
 		  text("Variance:", width/3, (changeValues.length+6)*spaceing);
 		  text(variance[currentTest], 2*(width/3), (changeValues.length+6)*spaceing);
-		  	
+		  
+		
 		quit.drawButton();
 	}
 	
@@ -111,17 +112,17 @@ public class PinchController  extends PApplet{
 	  public void keyPressed(){
 		  if (key == CODED) {
 		    if (keyCode == RIGHT) {
-		    	int v = changeValues[currentTest][currentSubTest];
+		    	float v = changeValues[currentTest][currentSubTest];
 		    	if(v<pwmMaxValue){
-		    		changeValues[currentTest][currentSubTest] = v +1;
+		    		changeValues[currentTest][currentSubTest] = v + 0.01f;
 		    		setHapticResponce();
 		    	}
 		    	recalculate();
 		    }
 		    if (keyCode == LEFT) {
-		     	int v = changeValues[currentTest][currentSubTest];
-		    	if(v> (refferenceValues[currentTest])){
-			    	changeValues[currentTest][currentSubTest] = v -1;
+		     	float v = changeValues[currentTest][currentSubTest];
+		    	if(v> 0.01){
+			    	changeValues[currentTest][currentSubTest] = v - 0.01f;
 			    	setHapticResponce();
 		    	}
 		    	recalculate();
@@ -129,10 +130,9 @@ public class PinchController  extends PApplet{
 		  }
 		  }
 		  
-	  
-	  
+	  	  
 	  private void setHapticResponce(){
-		  pinchUserScreen.setHapticResponce(changeValues[currentTest][currentSubTest],0,refferenceValues[currentTest],0); //setValue range
+		  pinchUserScreen2.setHapticResponce(changeValues[currentTest][currentSubTest],0.5f,refferenceValues[currentTest]); //setValue range
 	  }
 	  
 	  private void recalculate(){
@@ -189,11 +189,11 @@ public class PinchController  extends PApplet{
 		if(!g){
 			this.noLoop();
 			surface.setVisible(false);
-			pinchUserScreen.running(false);
+			pinchUserScreen2.running(false);
 		} else {
 			this.loop();
 			surface.setVisible(true);
-			pinchUserScreen.running(true);
+			pinchUserScreen2.running(true);
 		  }
 	  }
 

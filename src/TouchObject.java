@@ -17,7 +17,7 @@ public class TouchObject {
 		this.g=g;
 		this.b=b;
 		this.p = parent;
-		this.size = p.height/3;
+		this.size = p.height/2;
 	}
 	
 	TouchObject(int x, int y, int r, int g, int b, PApplet parent, String l){
@@ -27,7 +27,7 @@ public class TouchObject {
 		this.g=g;
 		this.b=b;
 		this.p = parent;
-		this.size = p.height/3;
+		this.size = p.height/2;
 		this.label= l;
 	}
 	
@@ -90,5 +90,6 @@ public class TouchObject {
 	public int getHapticResponce(){
 		return hapticResponce;
 	}
+
 
 }

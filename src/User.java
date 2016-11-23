@@ -12,8 +12,11 @@ public class User {
 	String sex;
 	int[] pMax = new int[4];
 	int avPMax; 
+	String hand;
 	
-	boolean userDone = false; 
+	boolean userDone = false;
+
+	
 	
 	User(){
 		getUserInfo();
@@ -30,7 +33,7 @@ public class User {
 		this.age = user_input.nextInt( );
 		System.out.println("Male?:");
 		this.sex= user_input.next( );
-		
+		this.hand = user_input.next( );
 		userDone = true; 
 		
 	}

@@ -1,0 +1,47 @@
+<user Info>
+</user Info>
+
+<Pinch Size Test>
+<Results>
+76.002174
+76.29989
+76.04579
+75.89531
+76.11681
+</Results>
+<Pinch Size Test Average>
+76.072
+</Pinch Size Test Average>
+<Pinch Size Test Variance>
+0.022680884
+</Pinch Size Test Variance>
+</Pinch Size Test>
+
+<Single Finger JND>
+<255-0>
+255-0
+14
+13
+14
+/255-0
+255-50
+58
+57
+57
+/255-50
+255-100
+106
+111
+112
+/255-100
+255-150
+159
+158
+159
+/255-150
+255-200
+200
+200
+200
+/255-200
+

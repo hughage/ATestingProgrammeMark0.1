@@ -8,7 +8,7 @@ public class Button {
 	int x=0,y;
 	int xsize, ysize;
 	int r = 207,g =207,b =196;
-	boolean isSelected = false;
+	boolean isSelected = false, isInitiated = false;
 	
 	Button(PApplet parent, int n, int total, String name){
 		this.text = name;
@@ -49,7 +49,7 @@ public class Button {
 		p.text(text,p.width/2,y+(ysize/2));
 
 		
-		if(isSelected){
+		if(isInitiated){
 			p.fill(119,190,119);
 			p.noStroke();
 		} else {
@@ -67,6 +67,7 @@ public class Button {
 		if(p.mouseX>x && p.mouseX<x+xsize
 				&& p.mouseY>y && p.mouseY<y+ysize){
 			isSelected = !isSelected;
+			isInitiated = true;
 		} else {
 			//isSelected = false;
 		}
