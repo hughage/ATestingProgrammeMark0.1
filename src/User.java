@@ -7,8 +7,9 @@ public class User {
 	
 	Scanner user_input = new Scanner( System.in );
 	
-	String name;
-	int age;
+	String theDate;
+	String fileName;
+	String age;
 	String sex;
 	int[] pMax = new int[4];
 	int avPMax; 
@@ -25,14 +26,17 @@ public class User {
 	private void getUserInfo(){
 		
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		   Date date = new Date();
-		   System.out.println(dateFormat.format(date));
+		Date date = new Date();
+		System.out.println(dateFormat.format(date));
 		   
-		name = dateFormat.format(date);
+		theDate = dateFormat.format(date);
+		fileName = (date.getTime()+".txt");
+		System.out.println(fileName);
 		System.out.println("Age:");
-		this.age = user_input.nextInt( );
-		System.out.println("Male?:");
+		this.age = user_input.next( );
+		System.out.println("m or f:");
 		this.sex= user_input.next( );
+		System.out.println("l or r:");
 		this.hand = user_input.next( );
 		userDone = true; 
 		
@@ -40,18 +44,18 @@ public class User {
 	
 	public String getName(){
 		if (userDone){
-			return name; 
+			return theDate; 
 		} else {
 			String t = "User Input Not finished";
 			return t;
 		}
 	}
 	
-	public int getAge(){
+	public String getAge(){
 		if (userDone){
 			return age; 
 		} else {
-			return 0;
+			return "no Age";
 		}
 	}
 	

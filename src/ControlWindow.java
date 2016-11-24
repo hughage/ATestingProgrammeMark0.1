@@ -7,6 +7,7 @@ public class ControlWindow extends PApplet {
 	String[] windows = {"Single Finger JND", "Single Finger JND Tester ", "Multi Finger JND", "Multi Finger JND Tester","Grasp Size Test", "Pinch Test", "Pinch Test 2", "Print Results", "Quit"};
 	boolean initiated[];
 	
+	User user;
 	SingleFingerJNDController singleFingerJNDController;
 	SingleFingerJNDTesterController singleFingerJNDTesterController;
 	GraspTestController graspTestController;
@@ -23,6 +24,8 @@ public class ControlWindow extends PApplet {
 	Button[] buttons;
 	
 	ControlWindow(){
+		arduino = new Arduino(this);	  
+		user = new User();
 		String[] a = {""};
 		PApplet.runSketch(a, this);
 	}
@@ -34,9 +37,7 @@ public class ControlWindow extends PApplet {
 		  }
 	  
 	  public void setup(){
-		  
-		  arduino = new Arduino(this);
-		  
+		    	  
 		  initiated = new boolean[windows.length];
 		  for (int i =0; i<initiated.length; i++){
 			  initiated[i]=false;
@@ -138,16 +139,53 @@ public class ControlWindow extends PApplet {
 		 break;
 		 
 		 case 8: 
-			 if (!initiated[selector]){	
-				 out = new Output();
+			 //if (!initiated[selector]){	
+			 try{
+			 	 out = new Output(user);
+			 	try{
 				 out.setGraspSizeResults(graspTestController);
+			 	} catch (Exception e) {
+			 		out.noResult("graspTestController");
+			 	}
+			 	try{
 				 out.setSingleFingerJNDController(singleFingerJNDController);
-				 out.setJNDControllerResults(jndController);
-				 out.close();
-				 initiated[selector] = true;
-			 } if(initiated[selector]) {
-				 
+			 	} catch (Exception e) {
+			 		out.noResult("singleFingerJNDController");
+			 	}
+				try{
+					out.setSingleFingerJNDTesterResults(singleFingerJNDTesterController);
+				} catch (Exception e) {
+				 	out.noResult("singleFingerJNDTesterController");
+				}
+				try{
+					out.setJNDControllerResults(jndController);
+				} catch (Exception e) {
+				 	out.noResult("multi finger jnd");
+				}
+				try{
+					out.setMultiFingerJNDTesterResults(jndTestController);
+				} catch (Exception e) {
+				 	out.noResult("multi finger jnd tester");
+				}
+				try{
+					out.setPinchTestResults(pinchController);
+				} catch (Exception e) {
+					out.noResult("pinch test 1");
+				}
+				try{
+					out.setPinchTest2Results(pinchController2);
+				} catch (Exception e) {
+					out.noResult("pinch test 2");
+				}
+					out.close();
+			 } catch (Exception e) {
+				 System.out.println("Not all sections finshed/ or some error in data.");
 			 }
+				 
+				 //initiated[selector] = true;`
+			 //} if(initiated[selector]) {
+				 
+			// }
 		 break;
 		
 		 case 9: exit();
