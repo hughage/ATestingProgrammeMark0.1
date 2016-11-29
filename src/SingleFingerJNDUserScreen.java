@@ -11,6 +11,13 @@ public class SingleFingerJNDUserScreen extends PApplet {
 	TouchObject[] objects;
 	Haptic scene; 
 	
+	String leftText = "Changer";
+	String rightText = "Refference";
+	int textHeight = 100;
+	int textsize = 60;
+	int []textColour = {0,0,0};
+	
+	
 	
 	SingleFingerJNDUserScreen (Arduino ard){
 		this.arduino = ard;
@@ -19,9 +26,9 @@ public class SingleFingerJNDUserScreen extends PApplet {
 	}
 	
 	
-	  public void settings() {
-			smooth(8);
+	  public void settings() {			
 			fullScreen(P3D,1);
+			smooth(8);		  
 		  }
 	  
 	  
@@ -35,7 +42,9 @@ public class SingleFingerJNDUserScreen extends PApplet {
 		  objects = new TouchObject[2];
 		  objects[0] = left;
 		  objects[1] = right;		  
-		  scene = new Haptic(objects, arduino);	  
+		  scene = new Haptic(objects, arduino);	
+		  textAlign(CENTER,CENTER);
+		  
 	  }
 
 	  
@@ -51,6 +60,12 @@ public class SingleFingerJNDUserScreen extends PApplet {
 		  } else {
 			 background(150); 
 		  }
+		  
+		  fill(textColour[0],textColour[1],textColour[2]);
+		  textSize(textsize);
+		  text(leftText,width/4,height-textHeight);
+		  text(rightText,3*(width/4),height-textHeight);
+		  noFill();
 		    
 		  left.update();
 		  right.update();		  
@@ -78,6 +93,8 @@ public class SingleFingerJNDUserScreen extends PApplet {
 			  surface.setVisible(true);
 		  }
 	  }
+	  
+	  
 	  
 }
 

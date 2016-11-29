@@ -10,6 +10,12 @@ public class PinchUserScreen2 extends PApplet{
 	PinchObject pinchObjectR;
 	PinchObject pinchObjectL;
 	
+	String leftText = "Changer";
+	String rightText = "Refference";
+	int textHeight = 100;
+	int textsize = 60;
+	int []textColour = {0,0,0};
+	
 	float pMax; //value of the maximum hand pinch size from the grasp size class
 
 	PinchUserScreen2(Arduino ard, float pinchMaxValue) {
@@ -52,6 +58,12 @@ public class PinchUserScreen2 extends PApplet{
 		  } else {
 			 background(150); 
 		  }
+		  
+		  fill(textColour[0],textColour[1],textColour[2]);
+		  textSize(textsize);
+		  text(leftText,width/4,height-textHeight);
+		  text(rightText,3*(width/4),height-textHeight);
+		  noFill();
 		  
 		  pinchObjectL.update(index, thumb);
 		  pinchObjectR.update(index, thumb);
