@@ -1,3 +1,4 @@
+
 import processing.core.PApplet;
 import processing.serial.*;
 
@@ -6,7 +7,7 @@ public class Arduino {
 	Serial stream;
 	PApplet p;	
 	int baudRate = 115200;
-	String ard = "/dev/tty.usbmodemFA141";
+	String ard = "/dev/tty.usbmodemFD141";
 	
 	String[] cock = {"blah","blah","blah","blah","blah","blah","blah","blah","blah"};
 	int stringCount =0;
@@ -15,7 +16,6 @@ public class Arduino {
 	float multiplyValue;
 	
 	int previousA, previousB; 
-	
 	
 	
 	Arduino(PApplet parent){
@@ -68,7 +68,9 @@ public class Arduino {
 		float tempF2 = (float)b*multiplyValue;
 		int tempI2 = (int) tempF2;
 		if (previousA != tempI || previousB != tempI2 ){
-			String send = "a"+tempI+"b"+tempI2+"=";
+			String send = "a"+(maxArduinoValue-tempI)+"b"+(maxArduinoValue-tempI2)+"=";
+			System.out.println("a"+tempI+"b"+tempI2+"= wooo0");
+			//String send = "a"+tempI+"b"+tempI2+"=";
 			stream.write(send);
 			previousA = tempI;
 			previousB = tempI2;
@@ -87,8 +89,10 @@ public class Arduino {
 		int tempI2 = (int) tempF2;
 		
 		if (previousA != tempI || previousB != tempI2 ){
-			String send = "a"+tempI+"b"+tempI2+"=";
-			System.out.println("a"+tempI+"b"+tempI2+"= ");
+			
+			
+			String send = "a"+(maxArduinoValue-tempI)+"b"+(maxArduinoValue-tempI2)+"=";
+			//System.out.println("a"+tempI+"b"+tempI2+"= wooo1");
 			stream.write(send);
 			printToScreen(send);
 			previousA = tempI;
@@ -102,8 +106,8 @@ public class Arduino {
 		int tempI2 = c[1];
 		
 		if (previousA != tempI || previousB != tempI2 ){
-			String send = "a"+tempI+"b"+tempI2+"=";
-			System.out.println("a"+tempI+"b"+tempI2+"= ");
+			String send = "a"+(maxArduinoValue-tempI)+"b"+(maxArduinoValue-tempI2)+"=";
+			System.out.println("a"+tempI+"b"+tempI2+"= wooo2");
 			stream.write(send);
 			printToScreen(send);
 			previousA = tempI;

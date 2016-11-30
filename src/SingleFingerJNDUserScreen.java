@@ -12,7 +12,7 @@ public class SingleFingerJNDUserScreen extends PApplet {
 	Haptic scene; 
 	
 	String leftText = "Changer";
-	String rightText = "Refference";
+	String rightText = "Reference";
 	int textHeight = 100;
 	int textsize = 60;
 	int []textColour = {0,0,0};

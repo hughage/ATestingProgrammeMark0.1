@@ -12,7 +12,7 @@ public class SingleFingerJNDController extends PApplet {
 	int currentSubTest = 0; //which repeat for test 1,2,3,4,5;
 	int testValue = 0; // value for increase of base PWM value;
 	int pwmMaxValue =255;
-	int refferenceValues[] = {0,50,100,150,200};
+	int refferenceValues[] = {255,205,155,105,55};
 	
 	int spaceing = 0;
 	int spaces = 8;
@@ -132,7 +132,7 @@ public class SingleFingerJNDController extends PApplet {
 		  if (key == CODED) {
 		    if (keyCode == RIGHT) {
 		    	int v = changeValues[currentTest][currentSubTest];
-		    	if(v<pwmMaxValue){
+		    	if(v<refferenceValues[currentTest]){
 		    		changeValues[currentTest][currentSubTest] = v +1;
 		    		setHapticResponce();
 		    	}
@@ -140,7 +140,7 @@ public class SingleFingerJNDController extends PApplet {
 		    }
 		    if (keyCode == LEFT) {
 		     	int v = changeValues[currentTest][currentSubTest];
-		    	if(v> (refferenceValues[currentTest])){
+		    	if(v> (0)){
 			    	changeValues[currentTest][currentSubTest] = v -1;
 			    	setHapticResponce();
 		    	}
