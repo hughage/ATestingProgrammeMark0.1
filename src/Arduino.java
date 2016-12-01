@@ -7,7 +7,7 @@ public class Arduino {
 	Serial stream;
 	PApplet p;	
 	int baudRate = 115200;
-	String ard = "/dev/tty.usbmodemFD141";
+	String ard = "/dev/tty.usbmodemFA141";
 	
 	String[] cock = {"blah","blah","blah","blah","blah","blah","blah","blah","blah"};
 	int stringCount =0;

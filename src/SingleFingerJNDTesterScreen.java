@@ -60,7 +60,8 @@ public class SingleFingerJNDTesterScreen extends PApplet  {
 			  if (myLeap.inIdealVolume()){
 				  background(255);	   
 			  } else {
-				 background(150); 
+					// background(150); 
+					 background(255);
 			  }
 			    
 			  left.update();

@@ -58,7 +58,8 @@ public class SingleFingerJNDUserScreen extends PApplet {
 		  if (myLeap.inIdealVolume()){
 			  background(255);	   
 		  } else {
-			 background(150); 
+				// background(150); 
+				 background(255);
 		  }
 		  
 		  fill(textColour[0],textColour[1],textColour[2]);

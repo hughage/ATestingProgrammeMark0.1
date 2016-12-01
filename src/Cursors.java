@@ -120,7 +120,7 @@ public class Cursors {
 			if (mag3D){
 			p.textSize(30);
 			p.fill(0,150);
-			p.text(m, (Math.abs(xPos+t.getX()))/2, (Math.abs(yPos+t.getY()))/2);
+			//p.text(m, (Math.abs(xPos+t.getX()))/2, (Math.abs(yPos+t.getY()))/2);
 			}
 			p.noStroke();
 			p.noFill();
