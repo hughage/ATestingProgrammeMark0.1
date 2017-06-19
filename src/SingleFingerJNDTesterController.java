@@ -18,11 +18,10 @@ public class SingleFingerJNDTesterController extends PApplet {
 	
 	int[] randomSelection;
 	
-	SingleFingerJNDTesterController (int [][] b, Arduino ard){
+	SingleFingerJNDTesterController (int [][] b, Arduinos ard){
 		String[] a = {""};
 		PApplet.runSketch(a, this);
 		this.averagesForJNDTest = b;
-		System.out.println("dog");
 		singleFingerjndTesterScreen = new SingleFingerJNDTesterScreen(b, ard);		
 	}
 	

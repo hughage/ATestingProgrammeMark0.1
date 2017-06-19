@@ -4,7 +4,7 @@ import processing.core.PApplet;
 public class JNDTesterScreen extends PApplet {
 	
 	Leap myLeap;
-	Arduino arduino;
+	Arduinos arduino;
 	Vector index, thumb;
 	Cursors iCursor, tCursor;	
 	TouchObject left, right, middle; 
@@ -14,7 +14,7 @@ public class JNDTesterScreen extends PApplet {
 	int[][] averagesForJNDTest;
 
 	
-	JNDTesterScreen(int[][] b, Arduino ard){
+	JNDTesterScreen(int[][] b, Arduinos ard){
 		this.averagesForJNDTest = b;	
 		String[] a = {""};
 		PApplet.runSketch(a, this);

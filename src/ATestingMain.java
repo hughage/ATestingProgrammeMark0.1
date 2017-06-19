@@ -7,8 +7,8 @@ public class ATestingMain{
 	static MyWindow myWindows;
 	
 	public static void main(String[] args) {	
+		System.out.println("willy");
 		myWindows = new MyWindow(); 
-		
 	}
 
 }

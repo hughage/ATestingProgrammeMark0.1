@@ -32,7 +32,6 @@ public class TouchObject {
 	}
 	
 	
-	
 	@SuppressWarnings("static-access")
 	public void update(){
 		if(contact){
@@ -68,7 +67,6 @@ public class TouchObject {
 		} else {
 			temp [1] = 0.0f;
 		}
-		
 		
 		return temp;
 	}

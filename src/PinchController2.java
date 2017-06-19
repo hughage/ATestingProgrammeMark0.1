@@ -23,7 +23,7 @@ public class PinchController2  extends PApplet{
 	
 	
 	
-	PinchController2(float average, Arduino ard) {
+	PinchController2(float average, Arduinos ard) {
 		String[] a = {""};
 		PApplet.runSketch(a, this);
 		pinchUserScreen2 = new PinchUserScreen2(ard, average);

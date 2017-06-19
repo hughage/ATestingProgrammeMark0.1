@@ -11,8 +11,7 @@ public class SingleFingerJNDController extends PApplet {
 	int currentTest = 0; // which reference test 255-0, 255-50, 255-100, 255-150, 255-200
 	int currentSubTest = 0; //which repeat for test 1,2,3,4,5;
 	int testValue = 0; // value for increase of base PWM value;
-	int pwmMaxValue =255;
-	int refferenceValues[] = {255,205,155,105,55};
+	int refferenceValues[] = {100,80,60,40,20};
 	
 	int spaceing = 0;
 	int spaces = 8;
@@ -23,7 +22,7 @@ public class SingleFingerJNDController extends PApplet {
 	
 	//boolean delay = true;
 	
-	SingleFingerJNDController (Arduino ard){
+	SingleFingerJNDController (Arduinos ard){
 		String[] a = {""};
 		PApplet.runSketch(a, this);
 		userTestScreen = new SingleFingerJNDUserScreen(ard);
@@ -58,11 +57,6 @@ public class SingleFingerJNDController extends PApplet {
 		  fill(0);
 		  textSize(20);
 		  textAlign(CENTER, CENTER);
-		  
-//		  if(delay){
-//			  delay(3000);
-//			  delay = false;	  
-//		  } 
 		  
 
 		  text("Current Test Number: "+(currentTest+1) +"\nRefference Value: "+refferenceValues[currentTest], width/2, spaceing);
@@ -160,7 +154,7 @@ public class SingleFingerJNDController extends PApplet {
 		  getVariance();
 		  for (int i = 0; i< averagesForJNDTest.length; i++){
 				  averagesForJNDTest[i][0] = refferenceValues[i];
-				  averagesForJNDTest[i][1] = (int) average[i];
+				  averagesForJNDTest[i][1] = refferenceValues[i] - (int) average[i];
 		  }
 	  }
 	  
@@ -169,7 +163,7 @@ public class SingleFingerJNDController extends PApplet {
 		  for(int j = 0; j<changeValues.length; j++){
 			  float sum = 0.0f;
 		  for (int i=0; i<changeValues[j].length; i++){
-			  sum = sum + changeValues[j][i];
+			  sum = sum + (refferenceValues[j]-changeValues[j][i]);
 		  }
 		  average[j] = sum/changeValues[j].length;
 		  }//return average[currentTest];
@@ -181,7 +175,7 @@ public class SingleFingerJNDController extends PApplet {
 		  float[] meanDifSquared = new float[changeValues[j].length];
 		  float meanDifSquaredSum = 0.0f;
 		  for (int i=0; i<changeValues[j].length; i++){
-			  meanDifSquared[i]= (float) Math.pow((average[j]-changeValues[j][i]), 2);
+			  meanDifSquared[i]= (float) Math.pow((average[j]-(refferenceValues[j]-changeValues[j][i])), 2);
 			  meanDifSquaredSum = meanDifSquaredSum + meanDifSquared[i];
 		  }
 		  variance[j] = meanDifSquaredSum/(changeValues[j].length-1);

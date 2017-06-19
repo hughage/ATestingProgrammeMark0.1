@@ -8,6 +8,7 @@ public class User {
 	Scanner user_input = new Scanner( System.in );
 	
 	String theDate;
+	String time;
 	String fileName;
 	String age;
 	String sex;
@@ -25,11 +26,14 @@ public class User {
 	
 	private void getUserInfo(){
 		
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		DateFormat dateFormat2 = new SimpleDateFormat("HH:mm:ss");
 		Date date = new Date();
+		System.out.println(dateFormat2.format(date));
 		System.out.println(dateFormat.format(date));
 		   
 		theDate = dateFormat.format(date);
+		time = dateFormat2.format(date);
 		fileName = (date.getTime()+".txt");
 		System.out.println(fileName);
 		System.out.println("Age:");

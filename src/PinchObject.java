@@ -14,7 +14,7 @@ public class PinchObject {
 	String label = "";
 	int screenLimitL, screenLimitR; //values to draw pinch object if cursors are in the correct part of the screen
 	float pinchUpperThreshold, pinchLowerThreshold; //the threshold to start squeezing the pinch object
-	float pinchThresholdScaler = 0.75f; //starts pinching object at 0.75 of pMaxValue
+	float pinchThresholdScaler = 0.75f; //starts pinching object at 0.75 of grasp max
 	int maximumHapticResult;
 	int minimumHapticResult;
 	float ramp; //ramp is a scaler used scale the speed at which force is applied based on object penetration, it is a ratio of the screen corrected pMax value.

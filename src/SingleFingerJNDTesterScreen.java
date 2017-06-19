@@ -5,7 +5,7 @@ import processing.core.PApplet;
 public class SingleFingerJNDTesterScreen extends PApplet  {
 
 	Leap myLeap;
-	Arduino arduino;
+	Arduinos arduino;
 	Vector index;
 	Cursors iCursor;	
 	TouchObject left, right, middle; 
@@ -15,7 +15,7 @@ public class SingleFingerJNDTesterScreen extends PApplet  {
 	int[][] averagesForJNDTest;
 
 	
-	SingleFingerJNDTesterScreen(int[][] b, Arduino ard){
+	SingleFingerJNDTesterScreen(int[][] b, Arduinos ard){
 		this.averagesForJNDTest = b;	
 		String[] a = {""};
 		PApplet.runSketch(a, this);

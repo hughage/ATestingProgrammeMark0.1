@@ -4,14 +4,14 @@ public class Haptic {
 	
 	TouchObject[] objects;
 	PinchObject pinchObject;
-	Arduino ard;
+	Arduinos ard;
 	
-	Haptic(TouchObject[] o, Arduino a){
+	Haptic(TouchObject[] o, Arduinos a){
 		this.objects = o;
 		ard = a; 
 	}
 	
-	Haptic(PinchObject p, Arduino a){
+	Haptic(PinchObject p, Arduinos a){
 		this.pinchObject = p;
 		ard = a; 
 	}
@@ -28,7 +28,7 @@ public class Haptic {
 			Vector temp = v[i];
 			for (int j =0; j< objects.length; j++){
 				if(getDistance(temp,objects[j])< (objects[j].size)/2){
-					float force = (float)objects[j].getHapticResponce()/255.0f;
+					float force = (float)objects[j].getHapticResponce()/100.0f;
 					forces[i] = force;
 					objects[j].contact = true;
 					}

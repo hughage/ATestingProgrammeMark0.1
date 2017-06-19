@@ -18,7 +18,7 @@ public class JNDTestController extends PApplet {
 	
 	int[] randomSelection;
 	
-	JNDTestController (int [][] b, Arduino ard){
+	JNDTestController (int [][] b, Arduinos ard){
 		String[] a = {""};
 		PApplet.runSketch(a, this);
 		this.averagesForJNDTest = b;

@@ -5,7 +5,7 @@ public class JNDUserTestScreen extends PApplet {
 	
 
 	Leap myLeap;
-	Arduino arduino;
+	Arduinos arduino;
 	Vector index, thumb;
 	Cursors iCursor, tCursor;	
 	TouchObject left, right; 
@@ -13,7 +13,7 @@ public class JNDUserTestScreen extends PApplet {
 	Haptic scene; 
 	
 	
-	JNDUserTestScreen (Arduino ard){
+	JNDUserTestScreen (Arduinos ard){
 		this.arduino = ard;
 		String[] a = {""};
 		PApplet.runSketch(a, this);

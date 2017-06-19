@@ -4,7 +4,7 @@ import processing.core.PApplet;
 public class SingleFingerJNDUserScreen extends PApplet {
 
 	Leap myLeap;
-	Arduino arduino;
+	Arduinos arduino;
 	Vector index;
 	Cursors iCursor, tCursor;	
 	TouchObject left, right; 
@@ -19,7 +19,7 @@ public class SingleFingerJNDUserScreen extends PApplet {
 	
 	
 	
-	SingleFingerJNDUserScreen (Arduino ard){
+	SingleFingerJNDUserScreen (Arduinos ard){
 		this.arduino = ard;
 		String[] a = {""};
 		PApplet.runSketch(a, this);

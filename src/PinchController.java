@@ -11,19 +11,19 @@ public class PinchController  extends PApplet{
 	float pMax; //value of the maximum hand pinch size from the grasp size class
 
 	int[][] changeValues; //a 3 by 3 array to store my test values
-	int jndTests = 3; //number of reference tests 255-0, 255-50, 255-100, 255-150, 255-200
+	int jndTests = 3; //number of reference tests
 	int jndSubTests = 3; // number of tests in each reference test
-	int currentTest = 0; // which reference test 255-0, 255-50, 255-100, 255-150, 255-200
+	int currentTest = 0; // which reference test
 	int currentSubTest = 0; //which repeat for test 1,2,3,4,5
-	int pwmMaxValue =255; //maximum output (255 = 5V)
-	int refferenceValues[] = {100,150,200}; // change to 0,50,100 for DEA version
+	int maxValue =100; //maximum output (0-100)
+	int refferenceValues[] = {100,66,33}; // change to 0,50,100 for DEA version
 	float average[] = new float[3]; //store my average pinch jnd values
 	float variance[] = new float[3];
 	int[][] averagesForJNDTest = new int[3][2];
 	
 	
 	
-	PinchController(float average, Arduino ard) {
+	PinchController(float average, Arduinos ard) {
 		String[] a = {""};
 		PApplet.runSketch(a, this);
 		pinchUserScreen = new PinchUserScreen(ard, average);
@@ -112,7 +112,7 @@ public class PinchController  extends PApplet{
 		  if (key == CODED) {
 		    if (keyCode == RIGHT) {
 		    	int v = changeValues[currentTest][currentSubTest];
-		    	if(v<pwmMaxValue){
+		    	if(v<maxValue){
 		    		changeValues[currentTest][currentSubTest] = v +1;
 		    		setHapticResponce();
 		    	}

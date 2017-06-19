@@ -4,7 +4,7 @@ import processing.core.PApplet;
 public class PinchUserScreen2 extends PApplet{
 	
 	Leap myLeap;
-	Arduino arduino;
+	Arduinos arduino;
 	Vector index, thumb;
 	Cursors iCursor, tCursor;
 	PinchObject pinchObjectR;
@@ -18,7 +18,7 @@ public class PinchUserScreen2 extends PApplet{
 	
 	float pMax; //value of the maximum hand pinch size from the grasp size class
 
-	PinchUserScreen2(Arduino ard, float pinchMaxValue) {
+	PinchUserScreen2(Arduinos ard, float pinchMaxValue) {
 		this.arduino = ard;
 		String[] a = {""};
 		PApplet.runSketch(a, this);
