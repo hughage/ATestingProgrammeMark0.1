@@ -14,7 +14,7 @@ public class PinchObject {
 	String label = "";
 	int screenLimitL, screenLimitR; //values to draw pinch object if cursors are in the correct part of the screen
 	float pinchUpperThreshold, pinchLowerThreshold; //the threshold to start squeezing the pinch object
-	float pinchThresholdScaler = 0.75f; //starts pinching object at 0.75 of grasp max
+	float pinchThresholdScaler = 0.5f; //starts pinching object at 0.75 of grasp max
 	int maximumHapticResult;
 	int minimumHapticResult;
 	float ramp; //ramp is a scaler used scale the speed at which force is applied based on object penetration, it is a ratio of the screen corrected pMax value.
@@ -55,25 +55,100 @@ public class PinchObject {
 	}
 	
 
-	public void update(Vector i, Vector t){
+	public void update(ThreeDCursor ic, ThreeDCursor tc){
 		
-		this.index = i;
-		this.thumb = t;
-		this.pinchDistance = index.distanceTo(thumb);
+		Vector i = new Vector (ic.position);
+		Vector t = new Vector (tc.position);
+		
+		p.stroke(255,134,30);
+		p.line(i.getX(),i.getY(), i.getZ(),t.getX(),t.getY(), t.getZ());
+		
+		//this.pinchDistance = index.distanceTo(thumb);
 		
 		if (onSide(i)&&onSide(t)){
-			getMidPoint(i,t);
-			p.pushMatrix();
-			p.translate(posX, posY);
-			p.pushMatrix();
-			p.fill(r,g,b);
-			p.noStroke();
-			p.rotate(rotation);
-			p.ellipse(0,0,yMag,xMag);
-			p.popMatrix(); 
-			p.popMatrix();
-			p.noFill();
+
+		float[] temp= returnMidPoint(i,t);//ball.getPos();
+		p.pushMatrix();
+
+		p.fill(0,255,100);
+		p.translate(temp[0], temp [1], temp[2]); //!!!!!!!!!!!! minus? for x
+		
+		float tempDistanceLeft = p.sqrt( (p.sq(i.getX()-temp[0])) + (p.sq(i.getY()-temp[1])) + (p.sq(i.getZ()-temp[2])));
+		
+//		float tempRotZ = p.atan2(i.getY()-temp[1], i.getX()-temp[0]);
+//		float tempRotY = p.atan2(i.getZ()-temp[2], i.getX()-temp[0]);
+		
+		Vector test = new Vector(i.getX()-t.getX(),i.getY()-t.getY(),i.getZ()-t.getZ());
+		test = test.normalized();
+//		
+		float tempRotZ = p.atan2(test.getY(), test.getX());
+		float tempRotY = p.atan2(test.getZ(), test.getX());
+		float tempRotX = p.atan2(test.getZ(), test.getY());
+		
+		
+		p.rotateZ(tempRotZ);
+		p.rotateY(tempRotY);
+		p.rotateX(tempRotX);
+		
+		
+		if((pinchUpperThreshold+ic.xSize)/2> tempDistanceLeft){
+			float tempScaleL = (pinchUpperThreshold+ic.xSize)/2 - tempDistanceLeft;
+			tempScaleL = (tempScaleL/pinchUpperThreshold)*2;
+			p.scale(1-tempScaleL,1,1);	
 		}
+		
+
+	
+		//p.noFill();
+		p.stroke(255,0,0);
+		p.line(0, 0, 0, 1000,0,0);
+		p.stroke(0,255,0);
+		p.line(0, 0, 0, 0,1000,0);
+		p.stroke(0,0,255);
+		p.line(0, 0, 0,0 ,0,1000);
+		p.stroke(0);
+		p.sphere(pinchUpperThreshold/2);
+		p.popMatrix();
+	
+		}
+	}
+	
+	public float[] returnMidPoint(float[]l, float[]r){
+		
+		float x1 = l[0];
+		float  y1 = l[1];
+		float  z1 = l[2];
+		
+		float  x2 = r[0];
+		float  y2 = r[1];
+		float  z2 = r[2];
+		
+		float x=(x1+x2)/2f;
+		float y=(y1+y2)/2f;
+		float z=(z1+z2)/2f;
+		
+		float[] temp = {x,y,z};
+		
+		return temp;
+	}
+	
+	public float[] returnMidPoint(Vector l, Vector r){
+		
+		float x1 = l.getX();
+		float  y1 = l.getY();
+		float  z1 = l.getZ();
+		
+		float  x2 = r.getX();
+		float  y2 = r.getY();
+		float  z2 = r.getZ();
+		
+		float x=(x1+x2)/2f;
+		float y=(y1+y2)/2f;
+		float z=(z1+z2)/2f;
+		
+		float[] temp = {x,y,z};
+		
+		return temp;
 	}
 	
 

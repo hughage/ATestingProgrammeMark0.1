@@ -67,6 +67,8 @@ public class Leap {
 		indexCorrected.setX(xm*(index.getX()+xp));
 		indexCorrected.setY(height-(ym*((index.getY()-200)+yp)));
 		indexCorrected.setZ(zp+(zm*index.getZ()));		
+		
+		
 		thumbCorrected.setX(xm*(thumb.getX()+xp));
 		thumbCorrected.setY(height-(ym*((thumb.getY()-200)+yp)));
 		thumbCorrected.setZ(zp+(zm*thumb.getZ()));

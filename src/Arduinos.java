@@ -3,9 +3,9 @@ import processing.core.PApplet;
 import processing.serial.Serial;
 import cc.arduino.*;
 
-
 public class Arduinos {
-	
+		
+	//dog 
 	Arduino arduino;
 	PApplet p;	
 	int baudRate = 57600;
@@ -117,15 +117,35 @@ public class Arduinos {
 	}	
 	
 	public void setAB(int c[]){	
+
+		float a = (float)c[0]/100.0f;
+		float b = (float)c[1]/100.0f;
 		
-		int tempI = c[0];
-		int tempI2 = c[1];
+		int tempI =0;
+		int tempI2 =0;
+		
+		if(a<onThreshold){ //threshold test to make sure 0 is sent instead of a minimum value
+			tempI = 0;
+		} else {	
+        float tempF = PApplet.map(a,0,1,minArduinoValue,maxArduinoValue);//(float)a*multiplyValue;
+		tempI = (int) tempF;
+		}
+		
+		if(b<onThreshold){
+			tempI2 = 0;
+		} else {	
+		float tempF2 = PApplet.map(b,0,1,minArduinoValue,maxArduinoValue); //(float)b*multiplyValue;
+		tempI2 = (int) tempF2;
+		}
+		
 		
 		if (previousA != tempI || previousB != tempI2 ){
-			String send = PWMPin1+": "+tempI+" ; "+ PWMPin2+": "+tempI2;
+			String send = PWMPin1+" willy: "+tempI+" ; "+ PWMPin2+": "+tempI2;
+			p.println("A: "+a+" B: "+b);
+			p.println(send);
 			arduino.analogWrite(PWMPin1, tempI);
 			arduino.analogWrite(PWMPin2, tempI2);
-			printToScreen(send);
+			//printToScreen(send);
 			previousA = tempI;
 			previousB = tempI2;
 		}	

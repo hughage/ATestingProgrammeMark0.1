@@ -31,15 +31,15 @@ public class PinchUserScreen extends PApplet{
 	}
 	
 	public void setup(){
-		  myLeap = new Leap(width,height,100);
+		  myLeap = new Leap(width,height,width);
 		  Vector[] temp = myLeap.getIndexThumbPos();
 		  index = temp[0];
 		  thumb = temp[1];
 		  iCursor = new  ThreeDCursor (232,123,234,this);
 		  tCursor = new  ThreeDCursor (123,123,234,this);
-		  iCursor.drawMag3D(true);
-		  pinchObjectL = new PinchObject (23,233,189,0,width/2,255,0, 0.5f,myLeap.pMaxscreenCorrected(pMax), this);
-		  pinchObjectR = new PinchObject (23,233,189,width/2,width,150,0,0.5f, myLeap.pMaxscreenCorrected(pMax), this);
+		  //iCursor.drawMag3D(true);
+		  pinchObjectL = new PinchObject (23,233,189,0,width/2,100,0, 0.5f,myLeap.pMaxscreenCorrected(pMax), this);
+		  pinchObjectR = new PinchObject (23,233,189,width/2,width,100,0,0.5f, myLeap.pMaxscreenCorrected(pMax), this);
 		  
 	}
 	
@@ -47,6 +47,7 @@ public class PinchUserScreen extends PApplet{
 		  
 		  if (myLeap.leap.isConnected()){
 		    myLeap.update();
+		    float distanceBetween = myLeap.index.distanceTo(myLeap.thumb);
 		    index = myLeap.indexCorrected;
 		    thumb = myLeap.thumbCorrected;
 		  }
@@ -64,12 +65,13 @@ public class PinchUserScreen extends PApplet{
 		  text(rightText,3*(width/4),height-textHeight);
 		  noFill();
 		  
-		  pinchObjectL.update(index, thumb);
-		  pinchObjectR.update(index, thumb);
-		  haptics();
 		  iCursor.update(index);	  
 		  tCursor.update(thumb);
-		  iCursor.drawDistanceLine(thumb, myLeap.index.distanceTo(myLeap.thumb));	  
+		  
+		  pinchObjectL.update(iCursor, tCursor);
+		  pinchObjectR.update(iCursor, tCursor);
+		  haptics();
+		    
 		  drawSeperatorDots();
 		
 	}

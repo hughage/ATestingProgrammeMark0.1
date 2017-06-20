@@ -6,7 +6,7 @@ public class PinchUserScreen2 extends PApplet{
 	Leap myLeap;
 	Arduinos arduino;
 	Vector index, thumb;
-	Cursors iCursor, tCursor;
+	ThreeDCursor iCursor, tCursor;
 	PinchObject pinchObjectR;
 	PinchObject pinchObjectL;
 	
@@ -31,12 +31,12 @@ public class PinchUserScreen2 extends PApplet{
 	}
 	
 	public void setup(){
-		  myLeap = new Leap(width,height,100);
+		  myLeap = new Leap(width,height,600);
 		  Vector[] temp = myLeap.getIndexThumbPos();
 		  index = temp[0];
 		  thumb = temp[1];
-		  iCursor = new  Cursors (232,123,234,this);
-		  tCursor = new  Cursors (123,123,234,this);
+		  iCursor = new  ThreeDCursor (232,123,234,this);
+		  tCursor = new  ThreeDCursor  (123,123,234,this);
 		  iCursor.drawMag3D(true);
 		  pinchObjectL = new PinchObject (23,233,189,0,width/2,255,0, 0.5f,myLeap.pMaxscreenCorrected(pMax), this);
 		  pinchObjectL.setVisualLimit(false);
@@ -66,11 +66,13 @@ public class PinchUserScreen2 extends PApplet{
 		  text(rightText,3*(width/4),height-textHeight);
 		  noFill();
 		  
-		  pinchObjectL.update(index, thumb);
-		  pinchObjectR.update(index, thumb);
-		  haptics();
 		  iCursor.update(index);	  
 		  tCursor.update(thumb);
+		  
+		  pinchObjectL.update(iCursor, tCursor);
+		  pinchObjectR.update(iCursor, tCursor);
+		  haptics();
+
 		  iCursor.drawDistanceLine(thumb, myLeap.index.distanceTo(myLeap.thumb));	  
 		  drawSeperatorDots();
 		
