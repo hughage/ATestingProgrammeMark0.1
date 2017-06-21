@@ -1,5 +1,8 @@
 import java.io.PrintWriter;
-import java.util.Scanner;
+//import java.util.Scanner;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import processing.core.PApplet;
 import processing.data.Table;
@@ -17,18 +20,15 @@ public class NewOutput {
 	
 	boolean isReady = false;
 	
+	String fileName ="";
+	
 	NewOutput(PApplet p, User user){
 		try{
 
 		    table = new Table();
 		   
 		    TableRow newRow = table.addRow();
-//		    for (int i = 0; i<=10;i++){
-//		    	newRow.setString(i,""); 
-//		    }
-//		    table.addRow();
 		    
-		   // newRow = table.addRow();  
 		    newRow.setString(1,"Date:"); 
 		    newRow.setString(2,user.theDate); 
 		    
@@ -47,6 +47,10 @@ public class NewOutput {
 		    newRow = table.addRow();  
 		    newRow.setString(1,"Handed:"); 
 		    newRow.setString(2,user.hand); 
+		    
+		    DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmSS");
+		    Date date = new Date();
+		    fileName= dateFormat.format(date);
 		        
 		    this.p = p;
 
@@ -187,21 +191,59 @@ public class NewOutput {
 	}
 	
 	public void setPinchTestResults (PinchController s){
-		
+		table.addRow();
+		TableRow newRow = table.addRow();
+	    newRow.setString(1,"Pinch Test 1 Results");
+	    table.addRow();
+	    newRow = table.addRow();
+	    newRow.setString(1,"Refference value:"); 
+	    newRow.setString(2,"Test 1"); 
+	    newRow.setString(3,"Test 2"); 
+	    newRow.setString(4,"Test 3"); 
+	    newRow.setString(5,"Average Delta"); 
+	    newRow.setString(6,"Delta Varience "); 
+	    
+	    for(int i =0; i< s.refferenceValues.length; i++){
+    	newRow = table.addRow();
+    	newRow.setInt(1,  s.refferenceValues[i]);
+	    for(int j =0; j< s.changeValues[i].length; j++){
+			newRow.setInt(j+2,s.changeValues[i][j]);			
+		}
+	    newRow.setFloat(5,s.average[i]); 
+	    newRow.setFloat(6,s.variance[i]);     
+	    }	
 	}
 	
-	
-
+	public void setPinchTest2Results (PinchController2 s){
+		table.addRow();
+		TableRow newRow = table.addRow();
+	    newRow.setString(1,"Pinch Test 1 Results");
+	    table.addRow();
+	    newRow = table.addRow();
+	    newRow.setString(1,"Refference value:"); 
+	    newRow.setString(2,"Test 1"); 
+	    newRow.setString(3,"Test 2"); 
+	    newRow.setString(4,"Test 3"); 
+	    newRow.setString(5,"Average Delta"); 
+	    newRow.setString(6,"Delta Varience "); 
+	    
+	    for(int i =0; i< s.refferenceValues.length; i++){
+    	newRow = table.addRow();
+    	newRow.setInt(1,  s.refferenceValues[i]);
+	    for(int j =0; j< s.changeValues[i].length; j++){
+			newRow.setFloat(j+2,s.changeValues[i][j]);			
+		}
+	    newRow.setFloat(5,s.average[i]); 
+	    newRow.setFloat(6,s.variance[i]);     
+	    }	
+	}
 	
 	public void close(){
-		System.out.println("Enter file name: ");
-		Scanner scanner = new Scanner(System.in);
-		String username = scanner.nextLine();
-		System.out.println("File name: " + username);
-		p.saveTable(table, "data/"+username+".csv");
+//		System.out.println("Enter file name: ");
+//		Scanner scanner = new Scanner(System.in);
+//		String username = scanner.nextLine();
+		System.out.println("File name: " + fileName);
+		p.saveTable(table, "data/"+fileName+".csv");
 	}
-
-	
-	
 
 }

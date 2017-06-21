@@ -17,7 +17,6 @@ public class ControlWindow extends PApplet {
 	PinchController2 pinchController2;
 	Output out;
 	NewOutput nOut;
-
 	
 	int butWidth;
 	int butHeight;
@@ -174,11 +173,13 @@ public class ControlWindow extends PApplet {
 				}
 				try{
 					out.setPinchTestResults(pinchController);
+					nOut.setPinchTestResults(pinchController);
 				} catch (Exception e) {
 					out.noResult("pinch test 1");
 				}
 				try{
 					out.setPinchTest2Results(pinchController2);
+					nOut.setPinchTest2Results(pinchController2);
 				} catch (Exception e) {
 					out.noResult("pinch test 2");
 				}
@@ -195,9 +196,7 @@ public class ControlWindow extends PApplet {
 		 break;
 		
 		 case 9: exit();
-		 break;
-
-		 
+		 break;	 
 		 }
 		  
 		}

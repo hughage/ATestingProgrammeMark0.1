@@ -112,7 +112,7 @@ public class PinchController  extends PApplet{
 		  if (key == CODED) {
 		    if (keyCode == RIGHT) {
 		    	int v = changeValues[currentTest][currentSubTest];
-		    	if(v<maxValue){
+		    	if(v<refferenceValues[currentTest]){
 		    		changeValues[currentTest][currentSubTest] = v +1;
 		    		setHapticResponce();
 		    	}
@@ -120,7 +120,7 @@ public class PinchController  extends PApplet{
 		    }
 		    if (keyCode == LEFT) {
 		     	int v = changeValues[currentTest][currentSubTest];
-		    	if(v> (refferenceValues[currentTest])){
+		    	if(v> 0){
 			    	changeValues[currentTest][currentSubTest] = v -1;
 			    	setHapticResponce();
 		    	}
@@ -165,7 +165,7 @@ public class PinchController  extends PApplet{
 			  meanDifSquaredSum = meanDifSquaredSum + meanDifSquared[i];
 		  }
 		  variance[j] = meanDifSquaredSum/(changeValues[j].length-1);
-		  }//return variance[currentTest];
+		  }
 	  }
 	  
 	  public int[][] getAveragesForJNDTest(){

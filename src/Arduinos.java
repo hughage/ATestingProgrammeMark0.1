@@ -4,30 +4,22 @@ import processing.serial.Serial;
 import cc.arduino.*;
 
 public class Arduinos {
-		
-	//dog 
+
 	Arduino arduino;
 	PApplet p;	
 	int baudRate = 57600;
-	String ard = "/dev/tty.usbmodemFA141";
-	
-	String[] cock = {"blah","blah","blah","blah","blah","blah","blah","blah","blah"};
-	int stringCount =0;
-	
+	String ard = "/dev/tty.usbmodemFA141";	
+	String[] stringStore = {"blah","blah","blah","blah","blah","blah","blah","blah","blah"};
+	int stringCount =0;	
 	int maxArduinoValue = 255, minArduinoValue = 55;
-	float onThreshold = 0.01f; // smallest value (0-1) that has to be exceeded before applying the minimum start pwm value minArduinoValue
-	
-	float multiplyValue;
-	
+	float onThreshold = 0.01f; // smallest value (0-1) that has to be exceeded before applying the minimum start pwm value minArduinoValue	
+	float multiplyValue;	
 	int previousA, previousB; 
 	
 	//(3,5,6,9) (1->4)
 	int PWMPin1 = 3; //emco1
 	int PWMPin2 = 5; //emco2
-//	int PWMPin3 = 6; //emco3
-//	int PWMPin4 = 9; //emco4
-	
-	
+
 	Arduinos(PApplet parent){
 		this.p= parent;
 	    if (Serial.list().length>=1){
@@ -141,8 +133,8 @@ public class Arduinos {
 		
 		if (previousA != tempI || previousB != tempI2 ){
 			String send = PWMPin1+" willy: "+tempI+" ; "+ PWMPin2+": "+tempI2;
-			p.println("A: "+a+" B: "+b);
-			p.println(send);
+			PApplet.println("A: "+a+" B: "+b);
+			PApplet.println(send);
 			arduino.analogWrite(PWMPin1, tempI);
 			arduino.analogWrite(PWMPin2, tempI2);
 			//printToScreen(send);
@@ -157,18 +149,18 @@ public class Arduinos {
 	}
 	
 	public void printToScreen(String t){
-		if(stringCount< cock.length-1){
+		if(stringCount< stringStore.length-1){
 			stringCount++;
 		} else {
 			stringCount = 0;
 		}
-		cock[stringCount] = t;
+		stringStore[stringCount] = t;
 	}
 	
 
 	public void displayPrint(){
-		for(int i =0; i<cock.length; i++){
-			    p.text(cock[i],p.width/2,(p.height/2)+(i*20));
+		for(int i =0; i<stringStore.length; i++){
+			    p.text(stringStore[i],p.width/2,(p.height/2)+(i*20));
 		}
 	}
 		

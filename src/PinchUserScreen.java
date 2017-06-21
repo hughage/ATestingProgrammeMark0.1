@@ -15,8 +15,10 @@ public class PinchUserScreen extends PApplet{
 	int textHeight = 100;
 	int textsize = 60;
 	int []textColour = {0,0,0};
+	float realDistance; //real distance in mm between thumb and index, used for haptic response not visuals
 	
 	float pMax; //value of the maximum hand pinch size from the grasp size class
+	
 
 	PinchUserScreen(Arduinos ard, float pinchMaxValue) {
 		this.arduino = ard;
@@ -37,17 +39,18 @@ public class PinchUserScreen extends PApplet{
 		  thumb = temp[1];
 		  iCursor = new  ThreeDCursor (232,123,234,this);
 		  tCursor = new  ThreeDCursor (123,123,234,this);
-		  //iCursor.drawMag3D(true);
-		  pinchObjectL = new PinchObject (23,233,189,0,width/2,100,0, 0.5f,myLeap.pMaxscreenCorrected(pMax), this);
-		  pinchObjectR = new PinchObject (23,233,189,width/2,width,100,0,0.5f, myLeap.pMaxscreenCorrected(pMax), this);
-		  
+
+		  pinchObjectL = new PinchObject (0,255,100,0,width/2,100,0, 0.75f,0.25f, pMax,myLeap.getpMaxScaler(),this);
+		  pinchObjectR = new PinchObject (23,100,255,width/2,width,100,0,0.75f,0.25f,pMax,myLeap.getpMaxScaler(), this);	  
 	}
 	
 	public void draw() {
-		  
+		
+		lights();
+		
 		  if (myLeap.leap.isConnected()){
 		    myLeap.update();
-		    float distanceBetween = myLeap.index.distanceTo(myLeap.thumb);
+		    realDistance= myLeap.index.distanceTo(myLeap.thumb);
 		    index = myLeap.indexCorrected;
 		    thumb = myLeap.thumbCorrected;
 		  }
@@ -63,13 +66,27 @@ public class PinchUserScreen extends PApplet{
 		  textSize(textsize);
 		  text(leftText,width/4,height-textHeight);
 		  text(rightText,3*(width/4),height-textHeight);
+		  
+		  textSize(10);
+		  text("RealDistance: "+realDistance,40, 60);
+		  text("Start pinch at: "+pinchObjectL.pinchUpperThreshold,40, 80);
+		  text("Stop pinch at: "+pinchObjectL.pinchLowerThreshold,40, 100);
+		  text("AveragePinchVal: "+pMax,40, 120);
+		  
+		  text("Corrected Distance: "+index.distanceTo(thumb),40, 140);
+		  text("Screen correction scaler "+myLeap.getpMaxScaler(),40, 160);
+		  text("PinchBall max size: "+ myLeap.getpMaxScaler()* pinchObjectL.pinchUpperThreshold,40, 180);
+		  text("PinchBall min size: "+ myLeap.getpMaxScaler()* pinchObjectL.pinchLowerThreshold,40, 200);
+		  text("PinchBall current scale factor: "+ pinchObjectL.scaleFactor,40, 220);
+		  text("PinchBall current size: "+ pinchObjectL.pinchUpperThreshold*pinchObjectL.screenCorrectionScaller*pinchObjectL.scaleFactor,40, 240);
+		  
 		  noFill();
 		  
 		  iCursor.update(index);	  
 		  tCursor.update(thumb);
 		  
-		  pinchObjectL.update(iCursor, tCursor);
-		  pinchObjectR.update(iCursor, tCursor);
+		  pinchObjectL.update(iCursor, tCursor, realDistance);
+		  pinchObjectR.update(iCursor, tCursor, realDistance);
 		  haptics();
 		    
 		  drawSeperatorDots();

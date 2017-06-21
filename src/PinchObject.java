@@ -14,14 +14,14 @@ public class PinchObject {
 	String label = "";
 	int screenLimitL, screenLimitR; //values to draw pinch object if cursors are in the correct part of the screen
 	float pinchUpperThreshold, pinchLowerThreshold; //the threshold to start squeezing the pinch object
-	float pinchThresholdScaler = 0.5f; //starts pinching object at 0.75 of grasp max
+	float pinchThresholdScaler = 0f; //starts pinching object at 0.75 of grasp max
 	int maximumHapticResult;
 	int minimumHapticResult;
-	float ramp; //ramp is a scaler used scale the speed at which force is applied based on object penetration, it is a ratio of the screen corrected pMax value.
 	boolean onSide;
+	float rd; //real distance in mm between thumb and index, used for haptic response not visuals
+	float screenCorrectionScaller;
 	
-	boolean visualLimit = true;
-	
+	float scaleFactor = 1.0f;
 	
 	PinchObject(int r, int g, int b, PApplet parent){
 		this.r=r;
@@ -30,7 +30,7 @@ public class PinchObject {
 		this.p = parent;		
 	}
 	
-	PinchObject(int r, int g, int b, int p1, int p2,int maxHR, int minHR,float ram, float pinchMaxAverage, PApplet parent){
+	PinchObject(int r, int g, int b, int p1, int p2,int maxHR, int minHR,float startPinch, float endPinch, float pinchMaxAverage, float pMScaller, PApplet parent){
 		this.r=r;
 		this.g=g;
 		this.b=b;
@@ -38,12 +38,12 @@ public class PinchObject {
 		this.screenLimitR = p2;
 		this.maximumHapticResult = maxHR;
 		this.minimumHapticResult = minHR;
-		this.ramp = ram;
 		this.pMax = pinchMaxAverage;
 		this.p = parent;			
-		pinchLowerThreshold = (pinchThresholdScaler*pMax)-(pMax*ramp);
-		pinchUpperThreshold = (pinchThresholdScaler*pMax); //start pinching object at 3/4 pinch max value
-		xMag= (int) pinchUpperThreshold;
+		this.pinchLowerThreshold = pMax*endPinch;
+		this.pinchUpperThreshold = pMax*startPinch; //start pinching object at 3/4 pinch max value
+		xMag= (int) pinchUpperThreshold;	
+		screenCorrectionScaller =  pMScaller;
 	}
 	
 	PinchObject(int r, int g, int b, PApplet parent, String l){
@@ -55,61 +55,56 @@ public class PinchObject {
 	}
 	
 
-	public void update(ThreeDCursor ic, ThreeDCursor tc){
+	public void update(ThreeDCursor ic, ThreeDCursor tc, float realDistance){
 		
-		Vector i = new Vector (ic.position);
-		Vector t = new Vector (tc.position);
+		Vector i = new Vector();
+		Vector t = new Vector();
 		
-		p.stroke(255,134,30);
-		p.line(i.getX(),i.getY(), i.getZ(),t.getX(),t.getY(), t.getZ());
+		this.rd = realDistance;
 		
-		//this.pinchDistance = index.distanceTo(thumb);
+		if (ic.position.getX()< tc.position.getX()){ // make sure thumb and index get treated the same way
+		i = new Vector (ic.position);
+		t = new Vector (tc.position);
+		} else {
+			t = new Vector (ic.position);
+			i = new Vector (tc.position);
+		}
 		
-		if (onSide(i)&&onSide(t)){
-
+//		p.stroke(255,134,30);
+//		p.line(i.getX(),i.getY(), i.getZ(),t.getX(),t.getY(), t.getZ());
+		
 		float[] temp= returnMidPoint(i,t);//ball.getPos();
+		Vector tempV = new Vector (temp[0],temp[1],temp[2]);
+			
+		if (onSide(tempV)){
+
 		p.pushMatrix();
 
-		p.fill(0,255,100);
-		p.translate(temp[0], temp [1], temp[2]); //!!!!!!!!!!!! minus? for x
-		
-		float tempDistanceLeft = p.sqrt( (p.sq(i.getX()-temp[0])) + (p.sq(i.getY()-temp[1])) + (p.sq(i.getZ()-temp[2])));
-		
-//		float tempRotZ = p.atan2(i.getY()-temp[1], i.getX()-temp[0]);
-//		float tempRotY = p.atan2(i.getZ()-temp[2], i.getX()-temp[0]);
-		
-		Vector test = new Vector(i.getX()-t.getX(),i.getY()-t.getY(),i.getZ()-t.getZ());
+		p.fill(r,g,b,200);
+		p.translate(temp[0], temp [1], temp[2]); 
+
+		Vector test = new Vector((i.getX()-t.getX()),(i.getY()-t.getY()),(i.getZ()-t.getZ()));
 		test = test.normalized();
-//		
-		float tempRotZ = p.atan2(test.getY(), test.getX());
-		float tempRotY = p.atan2(test.getZ(), test.getX());
-		float tempRotX = p.atan2(test.getZ(), test.getY());
 		
+ 		float tempRotZ = PApplet.atan2(test.getY(),test.getX());
+		float tempRotY = PApplet.atan2(test.getZ(), test.getX());
 		
 		p.rotateZ(tempRotZ);
 		p.rotateY(tempRotY);
-		p.rotateX(tempRotX);
 		
-		
-		if((pinchUpperThreshold+ic.xSize)/2> tempDistanceLeft){
-			float tempScaleL = (pinchUpperThreshold+ic.xSize)/2 - tempDistanceLeft;
-			tempScaleL = (tempScaleL/pinchUpperThreshold)*2;
-			p.scale(1-tempScaleL,1,1);	
+		if(realDistance<pinchUpperThreshold && realDistance>pinchLowerThreshold){
+			float distance= (t.distanceTo(i)-ic.xSize*2);
+			scaleFactor = (distance)/(pinchUpperThreshold*screenCorrectionScaller);
+		} else if(realDistance<(pinchLowerThreshold)){	
+			//scaleFactor = pinchLowerThreshold/(pinchUpperThreshold*screenCorrectionScaller);
 		}
-		
 
-	
-		//p.noFill();
-		p.stroke(255,0,0);
-		p.line(0, 0, 0, 1000,0,0);
-		p.stroke(0,255,0);
-		p.line(0, 0, 0, 0,1000,0);
-		p.stroke(0,0,255);
-		p.line(0, 0, 0,0 ,0,1000);
-		p.stroke(0);
-		p.sphere(pinchUpperThreshold/2);
-		p.popMatrix();
-	
+		//debugging axis
+		//drawDebugAxis();
+
+		p.scale(scaleFactor,1,1);	
+		p.sphere((pinchUpperThreshold*screenCorrectionScaller)/2);
+		p.popMatrix();	
 		}
 	}
 	
@@ -151,22 +146,14 @@ public class PinchObject {
 		return temp;
 	}
 	
-
-
-	@SuppressWarnings("static-access")
-	private void getMidPoint(Vector i, Vector t){
-		posX = (int)((i.getX()+t.getX())/2.0f);
-		posY = (int)((i.getY()+t.getY())/2.0f);	
-		if(pinchDistance<pinchUpperThreshold){
-			rotation = p.atan2(i.getY() - t.getY(), i.getX() - t.getX()); //i.angleTo(t);
-			if (pinchDistance<pinchLowerThreshold && visualLimit){
-				yMag = (int)pinchLowerThreshold;
-				} else{
-					yMag = (int)(pinchDistance);	
-				}
-		} else {
-			yMag = (int)pinchUpperThreshold;
-		}
+	public void drawDebugAxis(){
+		p.stroke(255,0,0);
+		p.line(0, 0, 0, 1000,0,0);
+		p.stroke(0,255,0);
+		p.line(0, 0, 0, 0,1000,0);
+		p.stroke(0,0,255);
+		p.line(0, 0, 0,0 ,0,1000);
+		p.stroke(0);
 	}
 	
 	private boolean onSide(Vector h){
@@ -182,30 +169,23 @@ public class PinchObject {
 		this.minimumHapticResult = minHR;
 	}
 	
-	public float getRamp(){
-		return ramp;
+	
+	public void setRampThreshold(float[] r){ // [0] start force of r[0]*averageGraspSize, end at r[1]
+		pinchLowerThreshold = r[0]*pMax;
+		pinchLowerThreshold = r[1]*pMax;
 	}
 	
-	public void setRamp(float r){
-		this.ramp = r;
-		pinchLowerThreshold = (pinchThresholdScaler*pMax)-(pMax*ramp);
-	}
 	
-	public void setVisualLimit(boolean v){
-		this.visualLimit = v;
-	}
-	
-	public int[] getHapticResult(){
-		int[] temp = { minimumHapticResult,minimumHapticResult};
-		if(pinchDistance<pinchUpperThreshold){
-			@SuppressWarnings("static-access")
-			float v = p.map(pinchDistance,pinchUpperThreshold,pinchLowerThreshold,minimumHapticResult,maximumHapticResult);
-			int t = (int) v;
-			if (t>maximumHapticResult){
-				t = maximumHapticResult;
-			}
-			temp[0] = t;
-			temp[1] = t;
+	public float[] getHapticResult(){
+		float[] temp = {0f,0f};
+		if(rd<pinchUpperThreshold && rd>pinchLowerThreshold){			
+			float v = PApplet.map(rd,pinchUpperThreshold,pinchLowerThreshold,minimumHapticResult,maximumHapticResult);
+			temp[0] =v/100f;
+			temp[1] =v/100f;
+		} else if(rd<pinchLowerThreshold){
+			float v = maximumHapticResult;
+			temp[0] =v/100f;
+			temp[1] =v/100f;
 		}
 		return temp;
 	}

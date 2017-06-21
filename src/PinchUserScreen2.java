@@ -15,6 +15,7 @@ public class PinchUserScreen2 extends PApplet{
 	int textHeight = 100;
 	int textsize = 60;
 	int []textColour = {0,0,0};
+	float realDistance; //real distance in mm between thumb and index, used for haptic response not visuals
 	
 	float pMax; //value of the maximum hand pinch size from the grasp size class
 
@@ -38,17 +39,18 @@ public class PinchUserScreen2 extends PApplet{
 		  iCursor = new  ThreeDCursor (232,123,234,this);
 		  tCursor = new  ThreeDCursor  (123,123,234,this);
 		  iCursor.drawMag3D(true);
-		  pinchObjectL = new PinchObject (23,233,189,0,width/2,255,0, 0.5f,myLeap.pMaxscreenCorrected(pMax), this);
-		  pinchObjectL.setVisualLimit(false);
-		  pinchObjectR = new PinchObject (23,233,189,width/2,width,255,0,0.5f, myLeap.pMaxscreenCorrected(pMax), this);
-		  pinchObjectR.setVisualLimit(false);
+		  pinchObjectL = new PinchObject (0,255,100,0,width/2,100,0, 0.75f,0.25f, pMax,myLeap.getpMaxScaler(),this);
+		  pinchObjectR = new PinchObject (23,100,255,width/2,width,100,0,0.75f,0.25f,pMax,myLeap.getpMaxScaler(), this);	
 		  
 	}
 	
 	public void draw() {
+		
+		lights();
 		  
 		  if (myLeap.leap.isConnected()){
 		    myLeap.update();
+		    realDistance= myLeap.index.distanceTo(myLeap.thumb);
 		    index = myLeap.indexCorrected;
 		    thumb = myLeap.thumbCorrected;
 		  }
@@ -69,11 +71,10 @@ public class PinchUserScreen2 extends PApplet{
 		  iCursor.update(index);	  
 		  tCursor.update(thumb);
 		  
-		  pinchObjectL.update(iCursor, tCursor);
-		  pinchObjectR.update(iCursor, tCursor);
+		  pinchObjectL.update(iCursor, tCursor, realDistance);
+		  pinchObjectR.update(iCursor, tCursor, realDistance);
 		  haptics();
 
-		  iCursor.drawDistanceLine(thumb, myLeap.index.distanceTo(myLeap.thumb));	  
 		  drawSeperatorDots();
 		
 	}
@@ -106,8 +107,10 @@ public class PinchUserScreen2 extends PApplet{
 	  }
 	
 	public void setHapticResponce(float a, float reff, int max){
-		pinchObjectL.setRamp(a);
-		pinchObjectR.setRamp(reff);
+		float[] l = {0.75f,a};
+		float[] r = {0.75f,reff};
+		pinchObjectL.setRampThreshold(l);
+		pinchObjectR.setRampThreshold(r);
 		pinchObjectL.setHapticResultBounds(max,0);
 		pinchObjectR.setHapticResultBounds(max,0);
 	  }

@@ -16,7 +16,7 @@ public class PinchController2  extends PApplet{
 	int currentTest = 0; // which reference test 255-0, 255-50, 255-100, 255-150, 255-200
 	int currentSubTest = 0; //which repeat for test 1,2,3,4,5
 	float pwmMaxValue = 0.5f; //maximum output (255 = 5V)
-	int refferenceValues[] = {255,205,155}; // change to 0,50,100 for DEA version
+	int refferenceValues[] = {100,66,33}; // change to 0,50,100 for DEA version
 	float average[] = new float[3]; //store my average pinch jnd values
 	float variance[] = new float[3];
 	int[][] averagesForJNDTest = new int[3][2];

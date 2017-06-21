@@ -10,8 +10,8 @@ public class ThreeDCursor {
 	boolean distanceLine = true;
 	boolean mag3D = true ;
 	
-	int xSize = 10; //size of cursor
-	int ySize = 10;
+	int xSize = 30; //size of cursor
+	int ySize = 30;
 	int r,g,b;		//color of cursor
 	int xPos, yPos, zPos; //position of cursor
 	

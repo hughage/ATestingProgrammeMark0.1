@@ -1,0 +1,111 @@
+*****************************************************
+
+<User Info>
+21/06/2017
+1
+1
+1
+</user Info>
+
+*****************************************************
+
+<Grasp Size Test>
+
+<Results>
+
+77.91371
+77.872826
+77.89907
+77.57744
+77.221306
+
+</Results>
+
+<Pinch Size Test Average>
+77.69688
+</Pinch Size Test Average>
+
+<Pinch Size Test Variance>
+0.08982274
+</Pinch Size Test Variance>
+
+</Grasp Size Test>
+
+*****************************************************
+
+<Single Finger JND>
+
+*****************************************************
+
+NO RESULT FOR: singleFingerJNDController
+
+*****************************************************
+
+<Single Finger JNDTester Results>
+
+<Results>
+*****************************************************
+
+NO RESULT FOR: singleFingerJNDTesterController
+
+*****************************************************
+
+<multi Finger JND>
+
+*****************************************************
+
+NO RESULT FOR: multi finger jnd
+
+*****************************************************
+
+<Multi Finger JNDTester Results>
+
+<Results>
+*****************************************************
+
+NO RESULT FOR: multi finger jnd tester
+
+*****************************************************
+
+<Pinch Test 1 JND>
+
+<255-100>
+77
+75
+78
+</255-100>
+
+<255-66>
+55
+57
+56
+</255-66>
+
+<255-33>
+27
+22
+22
+</255-33>
+
+<Averages>
+76.666664
+56.0
+23.666666
+</Averages>
+
+<Variance>
+2.3333335
+1.0
+8.333334
+</Varience>
+
+</Pinch Test 1 JND>
+
+*****************************************************
+
+<Pinch Test 2 JND>
+
+*****************************************************
+
+NO RESULT FOR: pinch test 2
+

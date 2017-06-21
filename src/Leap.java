@@ -5,6 +5,7 @@ public class Leap {
 	Controller leap;	
 	Vector index, thumb; //actuall millimeter values
 	Vector indexCorrected, thumbCorrected; //to scale to screen values xp+(xm*index.x)
+	float pMaxScaler;
 	
 	
 	int width, height, depth;
@@ -76,6 +77,10 @@ public class Leap {
 	
 	public float pMaxscreenCorrected(float p){
 		return xm*p;
+	}
+	
+	public float getpMaxScaler(){
+		return xm;
 	}
 	
 	public boolean inIdealVolume(){
