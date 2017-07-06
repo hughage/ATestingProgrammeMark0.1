@@ -33,9 +33,10 @@ public class JNDTesterScreen extends PApplet {
 			  
 			  
 			  myLeap = new Leap(width,height,100);
-			  Vector[] temp = myLeap.getIndexThumbPos();
-			  index = temp[0];
-			  thumb = temp[1];		  
+				 // Vector[] temp = myLeap.getIndexThumbPos();
+			  index = myLeap.getPalmPos(); 
+			  	//index = temp[0];
+			  thumb = index;	  
 			  iCursor = new  Cursors (232,123,234,this);
 			  tCursor = new  Cursors (123,123,234,this);
 			  left = new TouchObject(width/4,height/3, 119, 190, 119, this, "A");
@@ -54,10 +55,12 @@ public class JNDTesterScreen extends PApplet {
 		  public void draw() {
 			  
 			  if (myLeap.leap.isConnected()){
-			    myLeap.update();
-			    index = myLeap.indexCorrected;
-			    thumb = myLeap.thumbCorrected;
-			  }
+				    myLeap.update();
+				    index = myLeap.getPalmPos(); 
+					thumb = index;
+//				    index = myLeap.indexCorrected;
+//				    thumb = myLeap.thumbCorrected;
+				  }
 			  
 			  if (myLeap.inIdealVolume()){
 				  background(255);	   

@@ -132,23 +132,23 @@ public class JNDController extends PApplet {
 	  
 	  public void keyPressed(){
 		  if (key == CODED) {
-		    if (keyCode == RIGHT) {
-		    	int v = changeValues[currentTest][currentSubTest];
-		    	if(v<maxValue){
-		    		changeValues[currentTest][currentSubTest] = v +1;
-		    		setHapticResponce();
-		    	}
-		    	recalculate();
-		    }
-		    if (keyCode == LEFT) {
-		     	int v = changeValues[currentTest][currentSubTest];
-		    	if(v> (refferenceValues[currentTest])){
-			    	changeValues[currentTest][currentSubTest] = v -1;
-			    	setHapticResponce();
-		    	}
-		    	recalculate();
-		    }
-		  }
+			    if (keyCode == RIGHT) {
+			    	int v = changeValues[currentTest][currentSubTest];
+			    	if(v<refferenceValues[currentTest]){
+			    		changeValues[currentTest][currentSubTest] = v +1;
+			    		setHapticResponce();
+			    	}
+			    	recalculate();
+			    }
+			    if (keyCode == LEFT) {
+			     	int v = changeValues[currentTest][currentSubTest];
+			    	if(v> (0)){
+				    	changeValues[currentTest][currentSubTest] = v -1;
+				    	setHapticResponce();
+			    	}
+			    	recalculate();
+			    }
+			  }
 		  }
 		  
 	  

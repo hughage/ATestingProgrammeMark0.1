@@ -28,11 +28,11 @@ public class JNDUserTestScreen extends PApplet {
 	  
 	  public void setup(){
 		  
-		  
 		  myLeap = new Leap(width,height,100);
-		  Vector[] temp = myLeap.getIndexThumbPos();
-		  index = temp[0];
-		  thumb = temp[1];		  
+			 // Vector[] temp = myLeap.getIndexThumbPos();
+		  index = myLeap.getPalmPos(); 
+		  //index = temp[0];
+		  thumb = index;		  
 		  iCursor = new  Cursors (232,123,234,this);
 		  tCursor = new  Cursors (123,123,234,this);
 		  left = new TouchObject(width/4,height/2, 119, 190, 119, this);
@@ -50,8 +50,10 @@ public class JNDUserTestScreen extends PApplet {
 		  
 		  if (myLeap.leap.isConnected()){
 		    myLeap.update();
-		    index = myLeap.indexCorrected;
-		    thumb = myLeap.thumbCorrected;
+		    index = myLeap.getPalmPos(); 
+			thumb = index;
+//		    index = myLeap.indexCorrected;
+//		    thumb = myLeap.thumbCorrected;
 		  }
 		  
 		  if (myLeap.inIdealVolume()){

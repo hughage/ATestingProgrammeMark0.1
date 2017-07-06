@@ -11,10 +11,14 @@ public class Arduinos {
 	String ard = "/dev/tty.usbmodemFA141";	
 	String[] stringStore = {"blah","blah","blah","blah","blah","blah","blah","blah","blah"};
 	int stringCount =0;	
-	int maxArduinoValue = 255, minArduinoValue = 55;
-	float onThreshold = 0.01f; // smallest value (0-1) that has to be exceeded before applying the minimum start pwm value minArduinoValue	
+	int maxArduinoValue = 35, minArduinoValue = 185;
+	float onThreshold = 0.00f; // smallest value (0-1) that has to be exceeded before applying the minimum start pwm value minArduinoValue	
 	float multiplyValue;	
 	int previousA, previousB; 
+	
+	boolean vibeMode = true;
+	int vibeMaxArduinoValue = 185, vibeMinArduinoValue = 35;
+	float vibeOnThreshold = 0.01f; 
 	
 	//(3,5,6,9) (1->4)
 	int PWMPin1 = 3; //emco1
@@ -39,6 +43,12 @@ public class Arduinos {
 	    		p.exit();
 	    	}
 	        }
+	    
+	    if(vibeMode){
+	    	maxArduinoValue = vibeMaxArduinoValue;
+	    	minArduinoValue = vibeMinArduinoValue;
+	    	onThreshold = vibeOnThreshold;
+	    }
 	    
 	    multiplyValue = (float)maxArduinoValue;
 	    System.out.println(multiplyValue);
@@ -98,10 +108,43 @@ public class Arduinos {
 		}
 		
 		if (previousA != tempI || previousB != tempI2 ){
-			String send = PWMPin1+": "+tempI+" ; "+ PWMPin2+": "+tempI2;
+			String send = "setAB(float[] c): "+PWMPin1+": "+tempI+" ; "+ PWMPin2+": "+tempI2;
 			System.out.println(send);
 			arduino.analogWrite(PWMPin1, tempI);
 			arduino.analogWrite(PWMPin2, tempI2);
+			printToScreen(send);
+			previousA = tempI;
+			previousB = tempI2;
+		}	
+	}	
+	
+	public void setABSingle(float c[]){	
+		
+		float a = c[0];
+		float b = c[1];
+		
+		int tempI =0;
+		int tempI2 =0;
+		
+		if(a<onThreshold){ //threshold test to make sure 0 is sent instead of a minimum value
+			tempI = 0;
+		} else {	
+        float tempF = PApplet.map(a,0,1,minArduinoValue,maxArduinoValue);//(float)a*multiplyValue;
+		tempI = (int) tempF;
+		}
+		
+		if(b<onThreshold){
+			tempI2 = 0;
+		} else {	
+		float tempF2 = PApplet.map(b,0,1,minArduinoValue,maxArduinoValue); //(float)b*multiplyValue;
+		tempI2 = (int) tempF2;
+		}
+		
+		if (previousA != tempI || previousB != tempI2 ){
+			String send = "setAB(float[] c): "+PWMPin1+": "+tempI+" ; "+ PWMPin2+": "+tempI2;
+			System.out.println(send);
+			arduino.analogWrite(PWMPin1, tempI);
+			arduino.analogWrite(PWMPin2, 0);
 			printToScreen(send);
 			previousA = tempI;
 			previousB = tempI2;
@@ -132,7 +175,7 @@ public class Arduinos {
 		
 		
 		if (previousA != tempI || previousB != tempI2 ){
-			String send = PWMPin1+" willy: "+tempI+" ; "+ PWMPin2+": "+tempI2;
+			String send = "setAB(Int[]c): "+PWMPin1+" willy: "+tempI+" ; "+ PWMPin2+": "+tempI2;
 			PApplet.println("A: "+a+" B: "+b);
 			PApplet.println(send);
 			arduino.analogWrite(PWMPin1, tempI);

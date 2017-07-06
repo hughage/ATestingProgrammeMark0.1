@@ -10,8 +10,8 @@ public class PinchUserScreen2 extends PApplet{
 	PinchObject pinchObjectR;
 	PinchObject pinchObjectL;
 	
-	String leftText = "Changer";
-	String rightText = "Refference";
+	String leftText = "";
+	String rightText = "";
 	int textHeight = 100;
 	int textsize = 60;
 	int []textColour = {0,0,0};

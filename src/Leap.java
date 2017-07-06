@@ -3,7 +3,7 @@ import com.leapmotion.leap.*;
 public class Leap {
 	
 	Controller leap;	
-	Vector index, thumb; //actuall millimeter values
+	Vector index, thumb, palm; //actuall millimeter values
 	Vector indexCorrected, thumbCorrected; //to scale to screen values xp+(xm*index.x)
 	float pMaxScaler;
 	
@@ -55,6 +55,14 @@ public class Leap {
 		Vector[] temp = {index,thumb};
 		return temp;
 	}
+	
+	public Vector getPalmPos(){
+		Frame currentFrame = leap.frame();
+		this.palm = currentFrame.hands().rightmost().palmPosition();
+		palm = correctToScreen(palm);
+		return palm;
+		
+	}
 
 	
 	public void update(){
@@ -73,6 +81,14 @@ public class Leap {
 		thumbCorrected.setX(xm*(thumb.getX()+xp));
 		thumbCorrected.setY(height-(ym*((thumb.getY()-200)+yp)));
 		thumbCorrected.setZ(zp+(zm*thumb.getZ()));
+	}
+	
+	private Vector correctToScreen (Vector v){
+		Vector temp = v;
+		temp.setX(xm*(v.getX()+xp));
+		temp.setY(height-(ym*((v.getY()-200)+yp)));
+		temp.setZ(zp+(zm*v.getZ()));	
+		return temp;
 	}
 	
 	public float pMaxscreenCorrected(float p){

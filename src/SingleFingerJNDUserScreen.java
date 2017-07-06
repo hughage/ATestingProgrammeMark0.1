@@ -9,10 +9,11 @@ public class SingleFingerJNDUserScreen extends PApplet {
 	Cursors iCursor, tCursor;	
 	TouchObject left, right; 
 	TouchObject[] objects;
-	Haptic scene; 
+	//Haptic scene; 
+	HapticSingleFinger scene;
 	
-	String leftText = "Changer";
-	String rightText = "Reference";
+	String leftText = "";
+	String rightText = "";
 	int textHeight = 100;
 	int textsize = 60;
 	int []textColour = {0,0,0};
@@ -34,15 +35,15 @@ public class SingleFingerJNDUserScreen extends PApplet {
 	  
 	  public void setup(){		  		  
 		  myLeap = new Leap(width,height,100);
-		  Vector[] temp = myLeap.getIndexThumbPos();
-		  index = temp[0];  
+		 // Vector[] temp = myLeap.getIndexThumbPos();
+		  index = myLeap.getPalmPos();  
 		  iCursor = new  Cursors (232,123,234,this);
 		  left = new TouchObject(width/4,height/2, 119, 190, 119, this);
 		  right = new TouchObject(3*(width/4),height/2, 119, 190, 119, this);
 		  objects = new TouchObject[2];
 		  objects[0] = left;
 		  objects[1] = right;		  
-		  scene = new Haptic(objects, arduino);	
+		  scene = new HapticSingleFinger(objects, arduino);	
 		  textAlign(CENTER,CENTER);
 		  
 	  }
@@ -52,8 +53,8 @@ public class SingleFingerJNDUserScreen extends PApplet {
 		  
 		  if (myLeap.leap.isConnected()){
 		    myLeap.update();
-		    index = myLeap.indexCorrected;
-		  }
+		    index = myLeap.getPalmPos();
+		  }	
 		  
 		  if (myLeap.inIdealVolume()){
 			  background(255);	   

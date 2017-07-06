@@ -34,8 +34,8 @@ public class SingleFingerJNDTesterScreen extends PApplet  {
 			  
 			  
 			  myLeap = new Leap(width,height,100);
-			  Vector[] temp = myLeap.getIndexThumbPos();
-			  index = temp[0];	  
+				 // Vector[] temp = myLeap.getIndexThumbPos();
+			  index = myLeap.getPalmPos();    
 			  iCursor = new  Cursors (232,123,234,this);
 			  left = new TouchObject(width/4,height/3, 119, 190, 119, this, "A");
 			  right = new TouchObject(3*(width/4),height/3, 119, 190, 119, this, "B");
@@ -53,9 +53,9 @@ public class SingleFingerJNDTesterScreen extends PApplet  {
 		  public void draw() {
 			  
 			  if (myLeap.leap.isConnected()){
-			    myLeap.update();
-			    index = myLeap.indexCorrected;
-			  }
+				    myLeap.update();
+				    index = myLeap.getPalmPos();
+				  }	
 			  
 			  if (myLeap.inIdealVolume()){
 				  background(255);	   
