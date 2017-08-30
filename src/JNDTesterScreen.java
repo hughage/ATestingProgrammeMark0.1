@@ -7,15 +7,15 @@ public class JNDTesterScreen extends PApplet {
 	Arduinos arduino;
 	Vector index, thumb;
 	Cursors iCursor, tCursor;	
-	TouchObject left, right, middle; 
+	TouchObject left, right; 
 	TouchObject[] objects;
 	Haptic scene; 
 	
 	int[][] averagesForJNDTest;
 
 	
-	JNDTesterScreen(int[][] b, Arduinos ard){
-		this.averagesForJNDTest = b;	
+	JNDTesterScreen( Arduinos ard){
+			
 		String[] a = {""};
 		PApplet.runSketch(a, this);
 		this.arduino = ard;
@@ -30,22 +30,20 @@ public class JNDTesterScreen extends PApplet {
 		  
 		  
 		  public void setup(){
-			  
-			  
+			  	  
 			  myLeap = new Leap(width,height,100);
 				 // Vector[] temp = myLeap.getIndexThumbPos();
-			  index = myLeap.getPalmPos(); 
+			  index = myLeap.getPalmCorrectedPos(); 
 			  	//index = temp[0];
 			  thumb = index;	  
 			  iCursor = new  Cursors (232,123,234,this);
 			  tCursor = new  Cursors (123,123,234,this);
-			  left = new TouchObject(width/4,height/3, 119, 190, 119, this, "A");
-			  right = new TouchObject(3*(width/4),height/3, 119, 190, 119, this, "B");
-			  middle = new TouchObject(width/2,2*(height/3), 119, 190, 119, this, "?");
-			  objects = new TouchObject[3];
+			  left = new TouchObject(width/4,height/2, 119, 190, 119, this, "A");
+			  right = new TouchObject(3*(width/4),height/2, 119, 190, 119, this, "B");
+			  objects = new TouchObject[2];
 			  objects[0] = left;
 			  objects[1] = right;
-			  objects[2] = middle;
+
 			  
 			  scene = new Haptic(objects, arduino);
 			  
@@ -56,10 +54,9 @@ public class JNDTesterScreen extends PApplet {
 			  
 			  if (myLeap.leap.isConnected()){
 				    myLeap.update();
-				    index = myLeap.getPalmPos(); 
+				    index = myLeap.getPalmCorrectedPos(); 
 					thumb = index;
-//				    index = myLeap.indexCorrected;
-//				    thumb = myLeap.thumbCorrected;
+
 				  }
 			  
 			  if (myLeap.inIdealVolume()){
@@ -71,14 +68,14 @@ public class JNDTesterScreen extends PApplet {
 			    
 			  left.update();
 			  right.update();
-			  middle.update();
+			 // middle.update();
 			  
 			  Vector[] temp = {index,thumb};
 			  scene.collsion(temp);		
 			  
 			  iCursor.update(index);	  
-			  tCursor.update(thumb);
-			  iCursor.drawDistanceLine(thumb, myLeap.index.distanceTo(myLeap.thumb));
+			 // tCursor.update(thumb);
+			 // iCursor.drawDistanceLine(thumb, myLeap.index.distanceTo(myLeap.thumb));
 			  
 			  //arduino.displayPrint();
 
@@ -94,7 +91,7 @@ public class JNDTesterScreen extends PApplet {
 		  public void setHapticResponce(int a, int b, int m){
 			  left.setHapticResponce(a);
 			  right.setHapticResponce(b);
-			  middle.setHapticResponce(m);
+			 // middle.setHapticResponce(m);
 		  }
 		  
 		  public void running(boolean g){

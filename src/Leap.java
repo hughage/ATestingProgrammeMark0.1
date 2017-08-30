@@ -56,13 +56,25 @@ public class Leap {
 		return temp;
 	}
 	
-	public Vector getPalmPos(){
+	public Vector getPalmCorrectedPos(){
 		Frame currentFrame = leap.frame();
+		Vector palmCorrected;
 		this.palm = currentFrame.hands().rightmost().palmPosition();
-		palm = correctToScreen(palm);
-		return palm;
+		if(inVol(palm)){
+			palmCorrected = palm;
+			palmCorrected = correctToScreen(palmCorrected);
+		} else {
+			palmCorrected = new Vector(0,0,0f);
+		}
 		
+		return palmCorrected;
 	}
+	
+	public Vector getOgPalmPos(){
+		return palm;
+	}
+	
+	
 
 	
 	public void update(){
@@ -116,9 +128,6 @@ public class Leap {
 		}
 		return inIdeal;
 	}
-	
 
-	
-	
 	
 }

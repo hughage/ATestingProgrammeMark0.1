@@ -94,6 +94,8 @@ public class NewOutput {
 	    newRow.setString(3,"?"); 
 	    newRow.setString(4,"Answer"); 
 	    newRow.setString(5,"Score"); 
+	    newRow.setString(6,"Times A touched"); 
+	    newRow.setString(7,"Times B touched"); 
 	    int temp = 0;
 	    for (int i=0; i<s.testsValues.length; i++){		
 			newRow = table.addRow();
@@ -104,12 +106,15 @@ public class NewOutput {
 			if(s.testsValues[i][2]==s.testsValues[i][3]){
 				temp++;
 			}
+			newRow.setInt(6,s.testsValues[i][4]);
+			newRow.setInt(7,s.testsValues[i][5]);
+			
 	    }
 		newRow = table.addRow();
 		newRow.setString(1,"Result:");
 		newRow.setInt(2,temp);
 		newRow = table.addRow();
-		newRow.setString(1,"Out of 10");
+		newRow.setString(1,"Out of "+s.testsValues.length);
 	}
 	
 	public void setGraspSizeResults(GraspTestController gt){
@@ -172,6 +177,40 @@ public class NewOutput {
 	    newRow.setString(3,"?"); 
 	    newRow.setString(4,"Answer"); 
 	    newRow.setString(5,"Score"); 
+	    newRow.setString(6,"Times A touched"); 
+	    newRow.setString(7,"Times B touched"); 
+	    int temp = 0;
+	    for (int i=0; i<s.testsValues.length; i++){		
+			newRow = table.addRow();
+			newRow.setInt(1,s.testsValues[i][0]);
+			newRow.setInt(2,s.testsValues[i][1]);
+			newRow.setInt(3,s.testsValues[i][2]);
+			newRow.setInt(4,s.testsValues[i][3]);
+			if(s.testsValues[i][2]==s.testsValues[i][3]){
+				temp++;
+			}
+			newRow.setInt(6,s.testsValues[i][4]);
+			newRow.setInt(7,s.testsValues[i][5]);
+	    }
+		newRow = table.addRow();
+		newRow.setString(1,"Result:");
+		newRow.setInt(2,temp);
+		newRow = table.addRow();
+		newRow.setString(1,"Out of "+s.testsValues.length);
+	}
+	
+	public void setPinchTestResults (PinchController s){
+		PApplet.println("Pinch results printing");
+		table.addRow();
+		TableRow newRow = table.addRow();
+	    newRow.setString(1,"Pinch Test Results");
+	    table.addRow();
+	    newRow = table.addRow();
+	    newRow.setString(1,"A"); 
+	    newRow.setString(2,"B"); 
+	    newRow.setString(3,"?"); 
+	    newRow.setString(4,"Answer"); 
+	    newRow.setString(5,"Score"); 
 	    int temp = 0;
 	    for (int i=0; i<s.testsValues.length; i++){		
 			newRow = table.addRow();
@@ -187,31 +226,7 @@ public class NewOutput {
 		newRow.setString(1,"Result:");
 		newRow.setInt(2,temp);
 		newRow = table.addRow();
-		newRow.setString(1,"Out of 10");
-	}
-	
-	public void setPinchTestResults (PinchController s){
-		table.addRow();
-		TableRow newRow = table.addRow();
-	    newRow.setString(1,"Pinch Test 1 Results");
-	    table.addRow();
-	    newRow = table.addRow();
-	    newRow.setString(1,"Refference value:"); 
-	    newRow.setString(2,"Test 1"); 
-	    newRow.setString(3,"Test 2"); 
-	    newRow.setString(4,"Test 3"); 
-	    newRow.setString(5,"Average Delta"); 
-	    newRow.setString(6,"Delta Varience "); 
-	    
-	    for(int i =0; i< s.refferenceValues.length; i++){
-    	newRow = table.addRow();
-    	newRow.setInt(1,  s.refferenceValues[i]);
-	    for(int j =0; j< s.changeValues[i].length; j++){
-			newRow.setInt(j+2,s.changeValues[i][j]);			
-		}
-	    newRow.setFloat(5,s.average[i]); 
-	    newRow.setFloat(6,s.variance[i]);     
-	    }	
+		newRow.setString(1,"Out of "+s.testsValues.length);	
 	}
 	
 	public void setPinchTest2Results (PinchController2 s){
@@ -239,10 +254,7 @@ public class NewOutput {
 	}
 	
 	public void close(){
-//		System.out.println("Enter file name: ");
-//		Scanner scanner = new Scanner(System.in);
-//		String username = scanner.nextLine();
-		System.out.println("File name: " + fileName);
+		System.out.println("Test File name: " + fileName);
 		p.saveTable(table, "data/"+fileName+".csv");
 	}
 

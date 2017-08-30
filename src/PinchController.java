@@ -1,3 +1,6 @@
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+
 import processing.core.PApplet;
 
 
@@ -21,6 +24,13 @@ public class PinchController  extends PApplet{
 	float variance[] = new float[3];
 	int[][] averagesForJNDTest = new int[3][2];
 	
+	int[][] testsValues;
+	
+	//final
+	int[] aValues = {30,60,50,65,10,40,35,40,100,80,100,100,80,50,80,70,80,60};
+	
+	int[] bValues = {10,40,60,60,40,20,40,40,70,100,90,100,40,80,60,80,80,20};
+	
 	
 	
 	PinchController(float average, Arduinos ard) {
@@ -31,128 +41,159 @@ public class PinchController  extends PApplet{
 	}
 	
 	public void settings() {
-		size(500,500);
+		size(500,1000);
 	}
 	
 	public void setup(){
-		changeValues = new int[jndTests][jndSubTests];
-		for (int i=0; i< changeValues.length; i++){
-			 for (int j = 0; j<changeValues[i].length; j++){
-				 changeValues[i][j]=refferenceValues[i];
+		 spaces = aValues.length +5;
+		 spaceing = height/(spaces);
+		 quit = new Button(this,1,spaces,"Quit",height-(int)(spaceing*2));
+	 
+		 if(aValues.length == bValues.length){
+			 
+			 testsValues = new int[aValues.length][4];  
+			 
+			 for(int i=0; i<testsValues.length;i++){
+				 testsValues[i][0]=aValues[i];
+				 testsValues[i][1]=bValues[i];
+				 if(aValues[i]<bValues[i]){
+					 testsValues[i][2]=bValues[i];
+				 } else if(aValues[i]>bValues[i]){
+					 testsValues[i][2]=aValues[i];
+				 } else {
+					 testsValues[i][2]=666;
+				 }
 			 }
+			 
+		 } else {
+			 print("\naValues: ");
+			 for(int t: aValues){
+				 print(t+"; ");
+			 }
+			 print("\nbValues: ");
+			 for(int t: bValues){
+				 print(t+"; ");
+			 }
+			 println("a and b values not the same length, change in JND test controller class");
+			 
+			 exit();
 		 }
 		 
-		background(255);
-		spaceing = height/(changeValues.length+spaces);
-		quit = new Button(this,1,8,"Quit",height-(int)((float)spaceing*1.5f));
-		delay(3000);
-		//setHapticResponce();	
-		recalculate();	
+		 testsValues= shuffleArray(testsValues);	 
+		 delay(3000);
+		 setHapticResponce();
+		
+		
 	}
 	
 	public void draw() {
-		background(255);	  	  
-		fill(0);
-		textSize(20);
-		textAlign(CENTER, CENTER);
-		
-		text("Current Test Number: "+(currentTest+1) +"\nRefference Value: "+refferenceValues[currentTest], width/2, spaceing);
-		
-		for (int i=0; i<jndSubTests; i++){
-			  if(i==currentSubTest){
-				  fill(230,130,20);
-			  } 
-			  text(i+1, width/3, (i+3)*spaceing);
-			  text(changeValues[currentTest][i], 2*(width/3), (i+3)*spaceing); 
-			  fill(0);
-		  }
-		
-		  text("Average:", width/3, (changeValues.length+5)*spaceing);
-		  text(average[currentTest], 2*(width/3), (changeValues.length+5)*spaceing);
+		background(255);	  
 		  
-		  text("Variance:", width/3, (changeValues.length+6)*spaceing);
-		  text(variance[currentTest], 2*(width/3), (changeValues.length+6)*spaceing);
-		  	
-		quit.drawButton();
+		  fill(0);
+		  textSize(20);
+		  textAlign(CENTER, CENTER);
+		  
+
+		  text("Current Test Number: "+(currentTest+1), width/2, spaceing);
+		  	  
+
+		  text("Test:", width/6,(2*spaceing));
+		  text("Green", 2*(width/6),(2*spaceing));
+		  text("Blue", 3*(width/6),(2*spaceing));
+		  text("M", 4*(width/6),(2*spaceing));
+		  text("-", 5*(width/6),(2*spaceing));
+		  
+		  for (int i=0; i<testsValues.length; i++){
+			  if(i==currentTest){
+				  fill(230,130,20);
+			  } else{
+				  fill(0);
+			  }
+			  text((i+1), width/6,(3*spaceing)+(i*spaceing));
+			  text(testsValues[i][0], 2*(width/6),(3*spaceing)+(i*spaceing));
+			  text(testsValues[i][1], 3*(width/6),(3*spaceing)+(i*spaceing));
+			  text(testsValues[i][2], 4*(width/6),(3*spaceing)+(i*spaceing));
+			  if(testsValues[i][3]==666){
+				  text("Same", 5*(width/6),(3*spaceing)+(i*spaceing));
+			  } else {
+				  text(testsValues[i][3], 5*(width/6),(3*spaceing)+(i*spaceing));
+			  } 
+			  }	  
+		  
+		  quit.drawButton();	  
 	}
 	
 	  public void keyReleased(){
-		  if (key == '1') {
-			  currentTest = 0;	      
-		    }
-		  if (key == '2') {
-			  currentTest = 1;
-		    }
-		  if (key == '3') {
-			  currentTest = 2;		      
-		    }
 
-		  
-		  if (key == CODED) {
-			    if (keyCode == DOWN) {
-			    	if(currentSubTest<jndSubTests-1){
-			    	currentSubTest = currentSubTest +1;
-			    	}else {
-			    		currentSubTest = 0;
-			    	}
-			    }
-			    if (keyCode == UP) {
-			    	if(currentSubTest>0){
-			    	currentSubTest = currentSubTest -1;
-			    	} else {
-			    		currentSubTest = jndSubTests-1;
-			    	}
-			    }	   	    
+			  
+			  if (key == CODED) {
+				    if (keyCode == DOWN) {
+				    	if (currentTest<testsValues.length-1){
+				    	currentTest++;
+				    	} else {
+				    		currentTest =0;
+				    	}  	
+				    }
+				    if (keyCode == UP) {
+				    	if (currentTest>0){
+				    	currentTest--;
+				    	} else {
+				    		currentTest = testsValues.length-1;
+				    	}
+				    }	   	    
+			  }
+			  recalculate();
+			  setHapticResponce();	  
 		  }
-		  recalculate();
-		  setHapticResponce();
-	  }
+	  
 	  
 	  public void keyPressed(){
+		  
+		  if (key == 'a'|| key == 'A'){
+			  testsValues[currentTest][3] = testsValues[currentTest][0];
+		  }
+		  
+		  if (key == 'b'|| key == 'B'){
+			  testsValues[currentTest][3] = testsValues[currentTest][1];
+		  }
+		  if (key == 's'|| key == 'S'){
+			  testsValues[currentTest][3] = 666;
+		  }
+		  
 		  if (key == CODED) {
 		    if (keyCode == RIGHT) {
-		    	int v = changeValues[currentTest][currentSubTest];
-		    	if(v<refferenceValues[currentTest]){
-		    		changeValues[currentTest][currentSubTest] = v +1;
-		    		setHapticResponce();
+
 		    	}
-		    	recalculate();
 		    }
 		    if (keyCode == LEFT) {
-		     	int v = changeValues[currentTest][currentSubTest];
-		    	if(v> 0){
-			    	changeValues[currentTest][currentSubTest] = v -1;
-			    	setHapticResponce();
-		    	}
-		    	recalculate();
+
 		    }
-		  }
 		  }
 		  
 	  
 	  
 	  private void setHapticResponce(){
-		  pinchUserScreen.setHapticResponce(changeValues[currentTest][currentSubTest],0,refferenceValues[currentTest],0); //setValue range
+		  pinchUserScreen.setHapticResponce(testsValues[currentTest][0],0,testsValues[currentTest][1],0); //setValue range
 	  }
 	  
 	  private void recalculate(){
-		  getAverage();
-		  getVariance();
-		  for (int i = 0; i< averagesForJNDTest.length; i++){
-				  averagesForJNDTest[i][0] = refferenceValues[i];
-				  averagesForJNDTest[i][1] = (int) average[i];
-		  }
+//		  getAverage();
+//		  getVariance();
+//		  for (int i = 0; i< averagesForJNDTest.length; i++){
+//				  averagesForJNDTest[i][0] = refferenceValues[i];
+//				  averagesForJNDTest[i][1] = (int) average[i];
+//		  }
 	  }
 	  
 	  public void getAverage(){
 		  
-		  for(int j = 0; j<changeValues.length; j++){
-			  float sum = 0.0f;
-		  for (int i=0; i<changeValues[j].length; i++){
-			  sum = sum + changeValues[j][i];
-		  }
-		  average[j] = sum/changeValues[j].length;
-		  }//return average[currentTest];
+//		  for(int j = 0; j<changeValues.length; j++){
+//			  float sum = 0.0f;
+//		  for (int i=0; i<changeValues[j].length; i++){
+//			  sum = sum + changeValues[j][i];
+//		  }
+//		  average[j] = sum/changeValues[j].length;
+//		  }//return average[currentTest];
 	  }
 	  
 	  public void getVariance(){
@@ -184,6 +225,22 @@ public class PinchController  extends PApplet{
 			  //quit.isSelected = true;
 		  }
 	  }
+	  
+	  static int[][] shuffleArray(int[][] ar){
+	    // If running on Java 6 or older, use `new Random()` on RHS here
+	    Random rnd = ThreadLocalRandom.current();
+	    for (int i = ar.length - 1; i > 0; i--){
+	    	
+	      int index = rnd.nextInt(i + 1);
+	      // Simple swap
+	      int a[] = ar[index];
+	      ar[index] = ar[i];
+	      ar[i] = a;
+	    }
+	    return ar;
+	  }
+	  
+
 	
 	public void running(boolean g){
 		if(!g){

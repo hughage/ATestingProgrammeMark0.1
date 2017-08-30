@@ -9,6 +9,10 @@ public class TouchObject {
 	int hapticResponce = 0;
 	String label = "";
 	
+	int touchCount =0;
+	
+	boolean startContact = false;
+	
 	
 	TouchObject(int x, int y, int r, int g, int b, PApplet parent){
 		this.posX=x;
@@ -27,7 +31,7 @@ public class TouchObject {
 		this.g=g;
 		this.b=b;
 		this.p = parent;
-		this.size = p.height/2;
+		this.size = 2*p.height/3;
 		this.label= l;
 	}
 	
@@ -46,6 +50,15 @@ public class TouchObject {
 		p.textSize(120);
 		p.fill(0,150);
 		p.text(label, posX, posY);
+		
+		if (contact== false){
+			startContact=false;
+		}
+		
+		if(contact== true && startContact==false){
+			touchCount++;
+			startContact = true;
+		}
 		
 		p.noFill();
 	}
@@ -68,6 +81,7 @@ public class TouchObject {
 			temp [1] = 0.0f;
 		}
 		
+
 		return temp;
 	}
 	
@@ -79,6 +93,14 @@ public class TouchObject {
 		b = b*b;
 		float c = p.sqrt(a+b);
 		return c;
+	}
+	
+	public int getTouchCount(){
+		return touchCount;		
+	}
+	
+	public void resetTouchCount(){
+		touchCount=0; 
 	}
 	
 	public void setHapticResponce(int p){

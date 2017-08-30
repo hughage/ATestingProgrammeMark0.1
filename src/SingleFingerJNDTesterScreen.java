@@ -7,19 +7,28 @@ public class SingleFingerJNDTesterScreen extends PApplet  {
 	Leap myLeap;
 	Arduinos arduino;
 	Vector index;
+	Vector ogLeapPos; //non corrected leap values
 	Cursors iCursor;	
-	TouchObject left, right, middle; 
+	TouchObject left, right; 
 	TouchObject[] objects;
 	Haptic scene; 
 	
-	int[][] averagesForJNDTest;
+	int[][] ABTouchCount;
+	
+	int curentTest = 0; 
+	
 
 	
-	SingleFingerJNDTesterScreen(int[][] b, Arduinos ard){
-		this.averagesForJNDTest = b;	
+	SingleFingerJNDTesterScreen( Arduinos ard){
+			
 		String[] a = {""};
 		PApplet.runSketch(a, this);
 		this.arduino = ard;
+		
+	}
+	
+	public void setABTouchCount(int numberOfTests){
+		ABTouchCount = new int[numberOfTests][2];
 	}
 	
 
@@ -32,18 +41,17 @@ public class SingleFingerJNDTesterScreen extends PApplet  {
 		  
 		  public void setup(){
 			  
-			  
-			  myLeap = new Leap(width,height,100);
-				 // Vector[] temp = myLeap.getIndexThumbPos();
-			  index = myLeap.getPalmPos();    
+			  myLeap = new Leap(width,height,1000);
+			  println("Width: " +width+" Height: "+height);
+			  index = myLeap.getPalmCorrectedPos();   
 			  iCursor = new  Cursors (232,123,234,this);
-			  left = new TouchObject(width/4,height/3, 119, 190, 119, this, "A");
-			  right = new TouchObject(3*(width/4),height/3, 119, 190, 119, this, "B");
-			  middle = new TouchObject(width/2,2*(height/3), 119, 190, 119, this, "?");
-			  objects = new TouchObject[3];
+
+			  left = new TouchObject(width/4,height/2, 119, 190, 119, this, "A");
+			  right = new TouchObject(3*(width/4),height/2, 119, 190, 119, this, "B");
+			  objects = new TouchObject[2];
 			  objects[0] = left;
 			  objects[1] = right;
-			  objects[2] = middle;
+
 			  
 			  scene = new Haptic(objects, arduino);
 			  
@@ -54,7 +62,8 @@ public class SingleFingerJNDTesterScreen extends PApplet  {
 			  
 			  if (myLeap.leap.isConnected()){
 				    myLeap.update();
-				    index = myLeap.getPalmPos();
+				    index = myLeap.getPalmCorrectedPos();
+				    //ogLeapPos = myLeap.getOgPalmPos();
 				  }	
 			  
 			  if (myLeap.inIdealVolume()){
@@ -66,21 +75,17 @@ public class SingleFingerJNDTesterScreen extends PApplet  {
 			    
 			  left.update();
 			  right.update();
-			  middle.update();
 			  
 			  Vector[] temp = {index};
-			  scene.collsion(temp);		
-			  
-			  iCursor.update(index);	  
+			  scene.collsion(temp);					  
+			  iCursor.update(index);	 		  
 			  }
 		  
-		  public void setText (String t){ 
-		  }
+
 		  
-		  public void setHapticResponce(int a, int b, int m){
+		  public void setHapticResponce(int a, int b, int test){
 			  left.setHapticResponce(a);
-			  right.setHapticResponce(b);
-			  middle.setHapticResponce(m);
+			  right.setHapticResponce(b);		  
 		  }
 		  
 		  public void running(boolean g){

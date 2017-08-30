@@ -30,7 +30,7 @@ public class JNDUserTestScreen extends PApplet {
 		  
 		  myLeap = new Leap(width,height,100);
 			 // Vector[] temp = myLeap.getIndexThumbPos();
-		  index = myLeap.getPalmPos(); 
+		  index = myLeap.getPalmCorrectedPos(); 
 		  //index = temp[0];
 		  thumb = index;		  
 		  iCursor = new  Cursors (232,123,234,this);
@@ -50,7 +50,7 @@ public class JNDUserTestScreen extends PApplet {
 		  
 		  if (myLeap.leap.isConnected()){
 		    myLeap.update();
-		    index = myLeap.getPalmPos(); 
+		    index = myLeap.getPalmCorrectedPos(); 
 			thumb = index;
 //		    index = myLeap.indexCorrected;
 //		    thumb = myLeap.thumbCorrected;

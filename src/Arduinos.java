@@ -8,7 +8,7 @@ public class Arduinos {
 	Arduino arduino;
 	PApplet p;	
 	int baudRate = 57600;
-	String ard = "/dev/tty.usbmodemFA141";	
+	String ard = "/dev/tty.usbmodemFD131";	
 	String[] stringStore = {"blah","blah","blah","blah","blah","blah","blah","blah","blah"};
 	int stringCount =0;	
 	int maxArduinoValue = 35, minArduinoValue = 185;
@@ -17,7 +17,7 @@ public class Arduinos {
 	int previousA, previousB; 
 	
 	boolean vibeMode = true;
-	int vibeMaxArduinoValue = 185, vibeMinArduinoValue = 35;
+	int vibeMaxArduinoValue = 255, vibeMinArduinoValue = 50;
 	float vibeOnThreshold = 0.01f; 
 	
 	//(3,5,6,9) (1->4)
@@ -109,10 +109,10 @@ public class Arduinos {
 		
 		if (previousA != tempI || previousB != tempI2 ){
 			String send = "setAB(float[] c): "+PWMPin1+": "+tempI+" ; "+ PWMPin2+": "+tempI2;
-			System.out.println(send);
+		
 			arduino.analogWrite(PWMPin1, tempI);
 			arduino.analogWrite(PWMPin2, tempI2);
-			printToScreen(send);
+	
 			previousA = tempI;
 			previousB = tempI2;
 		}	
@@ -142,10 +142,10 @@ public class Arduinos {
 		
 		if (previousA != tempI || previousB != tempI2 ){
 			String send = "setAB(float[] c): "+PWMPin1+": "+tempI+" ; "+ PWMPin2+": "+tempI2;
-			System.out.println(send);
+		
 			arduino.analogWrite(PWMPin1, tempI);
 			arduino.analogWrite(PWMPin2, 0);
-			printToScreen(send);
+
 			previousA = tempI;
 			previousB = tempI2;
 		}	
@@ -176,8 +176,7 @@ public class Arduinos {
 		
 		if (previousA != tempI || previousB != tempI2 ){
 			String send = "setAB(Int[]c): "+PWMPin1+" willy: "+tempI+" ; "+ PWMPin2+": "+tempI2;
-			PApplet.println("A: "+a+" B: "+b);
-			PApplet.println(send);
+
 			arduino.analogWrite(PWMPin1, tempI);
 			arduino.analogWrite(PWMPin2, tempI2);
 			//printToScreen(send);
